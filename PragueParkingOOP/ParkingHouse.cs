@@ -67,7 +67,6 @@ namespace PragueParkingOOP
                     {
                         spot.Remove(vehicle);
                         Settings.UpdateParkingList(ParkingList);
-                        Message.SuccsessMessage("Removed");
                         return true;
                     }
                 }

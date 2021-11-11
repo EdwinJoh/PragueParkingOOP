@@ -1,13 +1,7 @@
 [
   {
-    "vehicles": [
-      {
-        "RegNumber": "HEJ123",
-        "size": 4,
-        "TimeIn": "2021-11-11T13:04:35.9568629+01:00"
-      }
-    ],
-    "AvailableSize": 0,
+    "vehicles": [],
+    "AvailableSize": 4,
     "SpotNumber": 1
   },
   {

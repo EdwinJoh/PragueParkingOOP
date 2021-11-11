@@ -60,7 +60,7 @@ namespace PragueParkingOOP
         }
         private void PrintParkingLot()
         {
-            
+
             Table t1 = new Table();
             var settings = Configuration.ReadSettingsFromFile();
             t1.AddColumns("[grey]EMPTY SPOT =[/] [green]GREEN[/]", "[grey]FULL SPOT =[/] [red]RED[/]").Centered().Alignment(Justify.Center);
@@ -101,6 +101,7 @@ namespace PragueParkingOOP
                 {
                     case "Car":
                         house.AddCar(regNumber);
+
                         break;
                     case "MC":
                         house.AddMc(regNumber);
@@ -133,12 +134,13 @@ namespace PragueParkingOOP
         public bool RemoveVehicle()
         {
             string regNum = ValidateRegNumber();
-           
+
             if (regNum != null)
             {
                 if (house.CheckReg(regNum))
                 {
                     house.RemoveVehicle(regNum);
+                    Message.SuccsessMessage("Removed");
                     return true;
                 }
             }
@@ -147,15 +149,15 @@ namespace PragueParkingOOP
         public bool MoveVehicle()
         {
             string vehicleReg = ValidateRegNumber();
-            if (vehicleReg !=null)
+            if (vehicleReg != null)
             {
                 if (house.CheckReg(vehicleReg) && house.MoveVehicle(vehicleReg))
                 {
-                    
+
                     return true;
                 }
             }
-            
+
             return false;
         }
     }
