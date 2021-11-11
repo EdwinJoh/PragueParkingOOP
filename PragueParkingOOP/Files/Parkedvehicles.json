@@ -2,9 +2,9 @@
   {
     "vehicles": [
       {
-        "RegNumber": "HEJ123",
+        "RegNumber": "HEJ111",
         "size": 4,
-        "TimeIn": "2021-11-11T14:16:03.2275359+01:00",
+        "TimeIn": "2021-11-11T15:49:21.1746361+01:00",
         "Price": 20
       }
     ],
@@ -222,8 +222,15 @@
     "SpotNumber": 43
   },
   {
-    "vehicles": [],
-    "AvailableSize": 4,
+    "vehicles": [
+      {
+        "RegNumber": "HEJ123",
+        "size": 4,
+        "TimeIn": "2021-11-11T15:49:04.6872124+01:00",
+        "Price": 20
+      }
+    ],
+    "AvailableSize": 0,
     "SpotNumber": 44
   },
   {

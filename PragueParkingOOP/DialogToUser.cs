@@ -10,6 +10,7 @@ namespace PragueParkingOOP
 {
     public class DialogToUser
     {
+        public Configuration settings { get; set; } = Configuration.ReadSettingsFromFile();
         public void SuccsessMessage(string option)
         {
             var table = new Table();
@@ -46,6 +47,27 @@ namespace PragueParkingOOP
             }
             return 0;
         }
-        
+        public void PriceMessage(int price)
+        {
+            var table = new Table();
+            table.AddColumn($"[green]Price to pay :{price}[/] ");
+            AnsiConsole.Write(table); ;
+        }
+        public void PrintPriceList()
+        {
+            List<string>prices = settings.ReadPriceFile();
+            var table = new Table();
+            table.Expand();
+            table.AddColumn(new TableColumn(new Markup("[yellow] PRICE LIST[/]").Alignment(Justify.Center)));
+            foreach (var price in prices)
+            {
+                table.AddRow(price);
+            }
+            AnsiConsole.Write(table);
+            var newTable = new Table();
+            newTable.AddColumn(new TableColumn("[grey] Press any key to get back to the menu[/]").Centered()).Alignment(Justify.Center);
+            AnsiConsole.Write(newTable);
+            Console.ReadKey();
+        }
     }
 }

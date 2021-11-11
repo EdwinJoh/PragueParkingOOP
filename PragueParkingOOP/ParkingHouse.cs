@@ -57,7 +57,7 @@ namespace PragueParkingOOP
                 Message.ParkinghouseFull();
             }
         }
-        public bool RemoveVehicle(string regNum)
+        public bool RemoveVehicle(string regNum, out int price)
         {
             foreach (var spot in ParkingList)
             {
@@ -65,12 +65,15 @@ namespace PragueParkingOOP
                 {
                     if (vehicle.RegNumber == regNum)
                     {
+                        string checkIn = vehicle.TimeIn.ToString();
+                        CalculatePrice(checkIn, vehicle, out price);
                         spot.Remove(vehicle);
                         Settings.UpdateParkingList(ParkingList);
                         return true;
                     }
                 }
             }
+            price = 0;
             return false;
         }
         public ParkingSpot FirstAvailableSpace(Vehicle vehicle)
@@ -115,7 +118,7 @@ namespace PragueParkingOOP
                 Vehicle vehicle = FindVehicle(RegNum);
                 if (CheckNewSpot(newSpot, vehicle, out ParkingSpot spot))
                 {
-                    RemoveVehicle(RegNum);
+                    RemoveVehicle(RegNum, out int price);
                     spot.AddVehicle(vehicle);
                     Settings.UpdateParkingList(ParkingList);
                     Console.Clear();
@@ -153,6 +156,30 @@ namespace PragueParkingOOP
             }
             return null;
         }
+        public int CalculatePrice(string checkIn, Vehicle vehicle, out int price)
+        {
 
+            TimeSpan span = DateTime.Now - vehicle.TimeIn;
+            Configuration? set = Configuration.ReadSettingsFromFile();
+            if (span.TotalMinutes <= set.FreeMin)
+            {
+                price = 0;
+            }
+            else
+            {
+                int hours;
+                if (span.TotalMinutes < 60)// one hour
+                {
+                    price = vehicle.Price;
+                }
+                else
+                {
+                    hours = (int)span.TotalMinutes / 60;
+                    hours++;
+                    price = hours * vehicle.Price;
+                }
+            }
+            return price;
+        }
     }
 }

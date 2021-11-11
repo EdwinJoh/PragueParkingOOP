@@ -48,6 +48,7 @@ namespace PragueParkingOOP
                     MoveVehicle();
                     break;
                 case "Prices":
+                    Message.PrintPriceList();
                     break;
                 case "Search Vehicle":
                     break;
@@ -101,13 +102,11 @@ namespace PragueParkingOOP
                 {
                     case "Car":
                         house.AddCar(regNumber);
-
                         break;
                     case "MC":
                         house.AddMc(regNumber);
                         break;
                     default:
-
                         break;
                 }
             }
@@ -139,8 +138,9 @@ namespace PragueParkingOOP
             {
                 if (house.CheckReg(regNum))
                 {
-                    house.RemoveVehicle(regNum);
+                    house.RemoveVehicle(regNum, out int price);
                     Message.SuccsessMessage("Removed");
+                    Message.PriceMessage(price);
                     return true;
                 }
             }
@@ -153,7 +153,6 @@ namespace PragueParkingOOP
             {
                 if (house.CheckReg(vehicleReg) && house.MoveVehicle(vehicleReg))
                 {
-
                     return true;
                 }
             }

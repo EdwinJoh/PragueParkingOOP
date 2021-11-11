@@ -11,6 +11,7 @@ namespace PragueParkingOOP
     {
         private const string configPath = @"../../../Files/ConfigSettings.json";
         private const string ParkingListPath = @"../../../Files/Parkedvehicles.json";
+        private const string PriceListPath = @"../../../Files/PriceList.txt";
         public int ParkingSpotSize { get; set; }        // [DEFAULT]  4
         public int ParkingHouseSize { get; set; }           // [DEFAULT]  100
         public int McSize { get; set; }
@@ -47,6 +48,11 @@ namespace PragueParkingOOP
         {
             string parkingHouse = JsonConvert.SerializeObject(list, Formatting.Indented);
             File.WriteAllText(ParkingListPath, parkingHouse);
+        }
+        public List<string> ReadPriceFile()
+        {
+            List<string> priceFile = File.ReadAllLines(PriceListPath).ToList();
+            return priceFile;
         }
     }
 }
