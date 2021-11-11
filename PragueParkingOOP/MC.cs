@@ -12,6 +12,7 @@ namespace PragueParkingOOP
         {
             var settings = Configuration.ReadSettingsFromFile();
             size = settings.McSize;
+            Price = settings.McPrice;
            
         }
     }

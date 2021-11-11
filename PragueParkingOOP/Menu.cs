@@ -10,7 +10,7 @@ namespace PragueParkingOOP
 {
     public class Menu
     {
-        public DialogToUser Message { get; set; }
+        public DialogToUser Message { get; set; } = new DialogToUser();
         public ParkingHouse house = new ParkingHouse();
         public Configuration configuration { get; set; }
 

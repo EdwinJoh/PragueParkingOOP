@@ -3,6 +3,8 @@
   "McSize": 2,
   "ParkingHouseSize": 100,
   "ParkingSpotSize": 4,
-  "CarPrice": 20
+  "CarPrice": 20,
+  "McPrice": 10,
+    "FreeMin": 10
 
 }

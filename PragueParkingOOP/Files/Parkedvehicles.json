@@ -1,18 +1,19 @@
 [
   {
-    "vehicles": [],
-    "AvailableSize": 4,
-    "SpotNumber": 1
-  },
-  {
     "vehicles": [
       {
-        "RegNumber": "KEK123",
+        "RegNumber": "HEJ123",
         "size": 4,
-        "TimeIn": "2021-11-11T10:46:10.7396555+01:00"
+        "TimeIn": "2021-11-11T14:16:03.2275359+01:00",
+        "Price": 20
       }
     ],
     "AvailableSize": 0,
+    "SpotNumber": 1
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
     "SpotNumber": 2
   },
   {
