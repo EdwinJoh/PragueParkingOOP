@@ -8,10 +8,12 @@ namespace PragueParkingOOP
 {
     internal class Car: Vehicle
     {
-
+        
         public Car(string aRegnum):base(aRegnum)
         {
-            size = Configuration.CarSize;
+            var settings = Configuration.ReadSettingsFromFile();
+            size = settings.CarSize;
+           
         }
     }
 }

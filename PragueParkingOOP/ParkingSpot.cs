@@ -8,16 +8,26 @@ namespace PragueParkingOOP
 {
     public class ParkingSpot
     {
-        List<ParkingSpot> parkingSpots = new List<ParkingSpot>();
-        private int seed = 1;
+        public List<Vehicle> vehicles { get; set; } = new List<Vehicle>();
         public int AvailableSize { get; set; }
         public int SpotNumber { get; set; }
         public ParkingSpot()
         {
-        var set = new Configuration();
+            var set = Configuration.ReadSettingsFromFile();
             AvailableSize = set.ParkingSpotSize;
-            SpotNumber = seed;
-            seed++;
+
+        }
+        public bool AddVehicle(Vehicle vehicle)
+        {
+            vehicles.Add(vehicle);
+            AvailableSize -= vehicle.size;
+            return true;
+        }
+        public bool Remove(Vehicle vehicle)
+        {
+            vehicles.Remove(vehicle);
+            AvailableSize += vehicle.size;
+            return true;
         }
     }
 }

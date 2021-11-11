@@ -1,3 +1,514 @@
-{
-
-}
+[
+  {
+    "vehicles": [
+      {
+        "RegNumber": "HEJ123",
+        "size": 4,
+        "TimeIn": "2021-11-11T13:04:35.9568629+01:00"
+      }
+    ],
+    "AvailableSize": 0,
+    "SpotNumber": 1
+  },
+  {
+    "vehicles": [
+      {
+        "RegNumber": "KEK123",
+        "size": 4,
+        "TimeIn": "2021-11-11T10:46:10.7396555+01:00"
+      }
+    ],
+    "AvailableSize": 0,
+    "SpotNumber": 2
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 3
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 4
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 5
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 6
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 7
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 8
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 9
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 10
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 11
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 12
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 13
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 14
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 15
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 16
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 17
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 18
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 19
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 20
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 21
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 22
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 23
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 24
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 25
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 26
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 27
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 28
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 29
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 30
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 31
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 32
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 33
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 34
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 35
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 36
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 37
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 38
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 39
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 40
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 41
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 42
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 43
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 44
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 45
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 46
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 47
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 48
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 49
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 50
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 51
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 52
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 53
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 54
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 55
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 56
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 57
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 58
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 59
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 60
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 61
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 62
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 63
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 64
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 65
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 66
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 67
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 68
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 69
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 70
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 71
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 72
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 73
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 74
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 75
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 76
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 77
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 78
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 79
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 80
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 81
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 82
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 83
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 84
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 85
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 86
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 87
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 88
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 89
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 90
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 91
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 92
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 93
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 94
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 95
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 96
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 97
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 98
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 99
+  },
+  {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 100
+  }
+]
