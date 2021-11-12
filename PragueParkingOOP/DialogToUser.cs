@@ -69,5 +69,9 @@ namespace PragueParkingOOP
             AnsiConsole.Write(newTable);
             Console.ReadKey();
         }
+        public void MoveNotCompleted(string regNum)
+        {
+
+        }
     }
 }

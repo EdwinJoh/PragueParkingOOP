@@ -107,6 +107,7 @@ namespace PragueParkingOOP
                         house.AddMc(regNumber);
                         break;
                     default:
+                        Console.WriteLine("Vehicle type does not exist yet...");
                         break;
                 }
             }
@@ -144,6 +145,10 @@ namespace PragueParkingOOP
                     return true;
                 }
             }
+            else
+            {
+                Message.ErrorCheckReg(regNum);
+            }
             return false;
         }
         public bool MoveVehicle()
@@ -155,6 +160,14 @@ namespace PragueParkingOOP
                 {
                     return true;
                 }
+                else
+                {
+                    Message.MoveNotCompleted(vehicleReg);
+                }
+            }
+            else
+            {
+                Message.ErrorCheckReg(vehicleReg);
             }
 
             return false;
