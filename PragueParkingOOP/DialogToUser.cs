@@ -10,7 +10,7 @@ namespace PragueParkingOOP
 {
     public class DialogToUser
     {
-        public Configuration settings { get; set; } = Configuration.ReadSettingsFromFile();
+        public Configuration? settings { get; set; } = Configuration.ReadSettingsFromFile();
         public void SuccsessMessage(string option)
         {
             var table = new Table();
@@ -26,7 +26,7 @@ namespace PragueParkingOOP
         public void ErrorCheckReg(string regNum)
         {
             var tabel = new Table();
-            tabel.AddColumn($"[red]Something went wrong. Please check your input {regNum} so its valid or if there is space left in the parkinghouse[/]");
+            tabel.AddColumn($"[red]Something went wrong. Check if {regNum} is already parked here or that there is any special characters in the regnumber[/]");
             AnsiConsole.Write(tabel);
 
         }

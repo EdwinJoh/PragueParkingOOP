@@ -29,5 +29,6 @@ namespace PragueParkingOOP
             AvailableSize += vehicle.size;
             return true;
         }
+        
     }
 }

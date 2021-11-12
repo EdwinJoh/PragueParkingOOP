@@ -11,8 +11,8 @@ namespace PragueParkingOOP
     public class Menu
     {
         public DialogToUser Message { get; set; } = new DialogToUser();
-        public ParkingHouse house = new ParkingHouse();
-        public Configuration configuration { get; set; }
+        public ParkingHouse parkingHouse = new ParkingHouse();
+        public Configuration? configuration { get; set; }
 
         public string MenuOption()
         {
@@ -51,13 +51,14 @@ namespace PragueParkingOOP
                     Message.PrintPriceList();
                     break;
                 case "Search Vehicle":
+                    SearchVehicle();
                     break;
                 case "Print Vehicles":
                     break;
                 case "Exit Program":
                     break;
             }
-            Thread.Sleep(1500);
+            Thread.Sleep(2500);
         }
         private void PrintParkingLot()
         {
@@ -71,9 +72,9 @@ namespace PragueParkingOOP
             var parkingSpotColorMarking = "";
             var printResult = "";
 
-            for (int i = 0; i < house.ParkingList.Count; i++)
+            for (int i = 0; i < parkingHouse.ParkingList.Count; i++)
             {
-                if (house.ParkingList[i].AvailableSize == settings.ParkingSpotSize)
+                if (parkingHouse.ParkingList[i].AvailableSize == settings.ParkingSpotSize)
                 {
                     parkingSpotColorMarking = "green";
                 }
@@ -88,9 +89,9 @@ namespace PragueParkingOOP
         }
         public void ParkVehicleType()
         {
-            string regNumber = ValidateRegNumber();
+            var regNumber = ValidateRegNumber();
             var message = new DialogToUser();
-            if (regNumber != null && house.CheckReg(regNumber) == false)
+            if (regNumber != null && parkingHouse.CheckReg(regNumber, out _) == false)
             {
                 var choice = AnsiConsole.Prompt(
               new SelectionPrompt<string>()
@@ -101,10 +102,10 @@ namespace PragueParkingOOP
                 switch (choice)
                 {
                     case "Car":
-                        house.AddCar(regNumber);
+                        parkingHouse.AddCar(regNumber);
                         break;
                     case "MC":
-                        house.AddMc(regNumber);
+                        parkingHouse.AddMc(regNumber);
                         break;
                     default:
                         break;
@@ -116,7 +117,7 @@ namespace PragueParkingOOP
             }
 
         }
-        private string ValidateRegNumber()
+        private string? ValidateRegNumber()
         {
             Console.Write("Enter Registration number:");
             string regNum = Console.ReadLine().ToUpper();
@@ -125,6 +126,7 @@ namespace PragueParkingOOP
             Match match = reg.Match(regNum);
             if (match.Success)
             {
+
                 return regNum;
 
             }
@@ -132,13 +134,13 @@ namespace PragueParkingOOP
         }
         public bool RemoveVehicle()
         {
-            string regNum = ValidateRegNumber();
+            var regNum = ValidateRegNumber();
 
             if (regNum != null)
             {
-                if (house.CheckReg(regNum))
+                if (parkingHouse.CheckReg(regNum, out _))
                 {
-                    house.RemoveVehicle(regNum, out int price);
+                    parkingHouse.RemoveVehicle(regNum, out int price);
                     Message.SuccsessMessage("Removed");
                     Message.PriceMessage(price);
                     return true;
@@ -148,16 +150,27 @@ namespace PragueParkingOOP
         }
         public bool MoveVehicle()
         {
-            string vehicleReg = ValidateRegNumber();
+            var vehicleReg = ValidateRegNumber();
             if (vehicleReg != null)
             {
-                if (house.CheckReg(vehicleReg) && house.MoveVehicle(vehicleReg))
+                if (parkingHouse.CheckReg(vehicleReg, out _) && parkingHouse.MoveVehicle(vehicleReg))
                 {
                     return true;
                 }
             }
 
             return false;
+        }
+        public Vehicle SearchVehicle()
+        {
+            var regNumber = ValidateRegNumber();
+
+            (Vehicle found, ParkingSpot spot) = parkingHouse.LookForVehicle(regNumber);
+            if (found != null)
+            {
+                Console.WriteLine($"Vehicle Found: {found.RegNumber} and its parked at {spot.SpotNumber}");
+            }
+            return null;
         }
     }
 

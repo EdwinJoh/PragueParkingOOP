@@ -95,19 +95,20 @@ namespace PragueParkingOOP
                 ParkingList.Add(new ParkingSpot { SpotNumber = i + 1 });
             }
         }
-        public bool CheckReg(string regnum)
+        public bool CheckReg(string regnum, out Vehicle vehicle)
         {
             foreach (var spots in ParkingList)
             {
-                foreach (var vehicle in spots.vehicles)
+                foreach (var vh in spots.vehicles)
                 {
-                    if (vehicle.RegNumber == regnum)
+                    if (vh.RegNumber == regnum)
                     {
-
+                        vehicle = vh;
                         return true;
                     }
                 }
             }
+            vehicle = null;
             return false;
         }
         public bool MoveVehicle(string RegNum)
@@ -156,30 +157,47 @@ namespace PragueParkingOOP
             }
             return null;
         }
-        public int CalculatePrice(string checkIn, Vehicle vehicle, out int price)
+        public (Vehicle?, ParkingSpot?) LookForVehicle(string RegNumber)
         {
-
-            TimeSpan span = DateTime.Now - vehicle.TimeIn;
-            Configuration? set = Configuration.ReadSettingsFromFile();
-            if (span.TotalMinutes <= set.FreeMin)
+            foreach (var spot in ParkingList)
             {
-                price = 0;
-            }
-            else
-            {
-                int hours;
-                if (span.TotalMinutes < 60)// one hour
+                foreach (Vehicle vehicle in spot.vehicles)
                 {
-                    price = vehicle.Price;
+                    if (vehicle.RegNumber == RegNumber)
+                    {
+                        return (vehicle, spot);
+                    }
+                    continue;
+                }
+            }
+            return (null, null);
+        }
+            public int CalculatePrice(string checkIn, Vehicle vehicle, out int price)
+            {
+
+                TimeSpan span = DateTime.Now - vehicle.TimeIn;
+                Configuration? set = Configuration.ReadSettingsFromFile();
+                if (span.TotalMinutes <= set.FreeMin)
+                {
+                    price = 0;
                 }
                 else
                 {
-                    hours = (int)span.TotalMinutes / 60;
-                    hours++;
-                    price = hours * vehicle.Price;
+                    int hours;
+                    if (span.TotalMinutes < 60)// one hour
+                    {
+                        price = vehicle.Price;
+                    }
+                    else
+                    {
+                        hours = (int)span.TotalMinutes / 60;
+                        hours++;
+                        price = hours * vehicle.Price;
+                    }
                 }
+                return price;
             }
-            return price;
+
         }
+
     }
-}

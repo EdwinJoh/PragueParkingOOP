@@ -11,8 +11,9 @@ namespace PragueParkingOOP
         public MC(string _RegNum):base(_RegNum)
         {
             var settings = Configuration.ReadSettingsFromFile();
-            size = settings.McSize;
+
             Price = settings.McPrice;
+            size = settings.McSize;
            
         }
     }
