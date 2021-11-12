@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace PragueParkingOOP
 {
@@ -38,6 +39,7 @@ namespace PragueParkingOOP
             {
                 throw new Exception("File does not exist");
                 //Skapa en ny tom lista åt användaren
+               
                 
             }
             
