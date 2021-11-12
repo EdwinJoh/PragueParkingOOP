@@ -11,10 +11,12 @@ namespace PragueParkingOOP
         public  List<Vehicle> vehicles { get; set; } = new List<Vehicle>();
         public int AvailableSize { get; set; }
         public int SpotNumber { get; set; }
+        public string Status { get; set; }
         public ParkingSpot()
         {
             var set = Configuration.ReadSettingsFromFile();
             AvailableSize = set.ParkingSpotSize;
+            Status = null;                  // standard value
 
         }
         public bool AddVehicle(Vehicle vehicle)

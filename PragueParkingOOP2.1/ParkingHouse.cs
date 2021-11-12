@@ -57,7 +57,7 @@ namespace PragueParkingOOP
         public bool AddVehicle(Vehicle vehicle)
         {
             var set = Configuration.ReadSettingsFromFile();
-            ParkingSpot spot = FirstAvailableSpace(vehicle);//borde ha en metod som kollar detta
+            ParkingSpot spot = FirstAvailableSpace(vehicle);
             if (spot != null && vehicle.size <= set.ParkingSpotSize)
             {
                 spot.AddVehicle(vehicle);
@@ -65,8 +65,9 @@ namespace PragueParkingOOP
                 Message.SuccsessMessage("Parked", spot);
                 return true;
             }
-            else if(spot != null && vehicle.size >set.ParkingSpotSize)
+            else if (spot != null && vehicle.size > set.ParkingSpotSize)
             {
+
                 return true;
             }
             else
@@ -90,8 +91,36 @@ namespace PragueParkingOOP
         }
         public ParkingSpot FirstAvailableSpace(Vehicle vehicle)
         {
-            ParkingSpot spot = ParkingList.Find(x => x.AvailableSize >= vehicle.size);
-            return spot;
+            List<ParkingSpot> Templist = new List<ParkingSpot>();
+            var set = Configuration.ReadSettingsFromFile();
+            if (vehicle.size <= set.ParkingSpotSize)
+            {
+                ParkingSpot spot = ParkingList.Find(x => x.AvailableSize >= vehicle.size);
+            }
+            else
+            {
+                for (int i = 0; i < set.SpacesForLargeVehicle; i++)
+                {
+                    if (ParkingList[i].AvailableSize == set.ParkingSpotSize)
+                    {
+                        Templist.Add(ParkingList[i]);
+                    }
+                    else if (ParkingList[i].AvailableSize < set.ParkingSpotSize)
+                    {
+                        Templist.Clear();
+                        continue;
+                    }
+                    if (Templist.Count == vehicle.size / set.ParkingSpotSize)
+                    {
+                        foreach (var spots in Templist)
+                        {
+
+                        }
+                    }
+                }
+            }
+            
+            return null;
         }
         public void NewParkingHouse()
         {

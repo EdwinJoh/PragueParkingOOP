@@ -24,6 +24,7 @@ namespace PragueParkingOOP
         public int BikePrice { get; set; }
         public int BusPrice { get; set; }
         public int FreeMin { get; set; }
+        public int SpacesForLargeVehicle { get; set; }
 
 
         public static Configuration? ReadSettingsFromFile(string filePath = "../../../Files/ConfigSettings.json")
