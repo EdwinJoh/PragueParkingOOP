@@ -102,14 +102,20 @@ namespace PragueParkingOOP
                 new SelectionPrompt<string>()
                 .Title("[grey]What vehicle would you like to add?[/]")
                 .PageSize(7)
-                .AddChoices(new[] {"Car", "MC" }));
+                .AddChoices(new[] { "Car", "MC", "Bike","Bus" }));
                 switch (choice)
                 {
                     case "Car":
-                        parkingHouse.AddCar(regNumber);
+                        parkingHouse.CreateVehicle(regNumber, "Car");
                         break;
                     case "MC":
-                        parkingHouse.AddMc(regNumber);
+                        parkingHouse.CreateVehicle(regNumber, "Mc");
+                        break;
+                    case "Bike":
+                        parkingHouse.CreateVehicle(regNumber, "Bike");
+                        break;
+                    case "Bus":
+                        parkingHouse.CreateVehicle(regNumber, "Bus");
                         break;
                     default:
                         Console.WriteLine("Vehicle type does not exist yet...");
@@ -147,7 +153,7 @@ namespace PragueParkingOOP
                 if (found != null)
                 {
                     parkingHouse.RemoveVehicle(found, spot, out int price);
-                    Message.SuccsessMessage("Removed",spot);
+                    Message.SuccsessMessage("Removed", spot);
                     Message.PriceMessage(price);
                     return true;
                 }
@@ -166,9 +172,9 @@ namespace PragueParkingOOP
         {
             var RegNumber = ValidateRegNumber();
             (Vehicle vehicleFound, ParkingSpot spot) = parkingHouse.ExistRegnumber(RegNumber);
-            if(RegNumber != null )
+            if (RegNumber != null)
             {
-                if (vehicleFound != null && parkingHouse.MoveVehicle(vehicleFound,spot))
+                if (vehicleFound != null && parkingHouse.MoveVehicle(vehicleFound, spot))
                 {
                     return true;
                 }
@@ -190,7 +196,7 @@ namespace PragueParkingOOP
             (Vehicle found, ParkingSpot spot) = parkingHouse.ExistRegnumber(regNumber);
             if (found != null)
             {
-               Message.SearchSuccses(found, spot);
+                Message.SearchSuccses(found, spot);
                 return found;
             }
             else

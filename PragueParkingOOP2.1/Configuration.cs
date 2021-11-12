@@ -16,8 +16,12 @@ namespace PragueParkingOOP
         public int ParkingHouseSize { get; set; }           // [DEFAULT]  100
         public int McSize { get; set; }
         public int CarSize { get; set; }
+        public int BusSize { get; set; }
+        public int BikeSize { get; set; }
         public int CarPrice { get; set; }
         public int McPrice { get; set; }
+        public int BikePrice { get; set; }
+        public int BusPrice { get; set; }
         public int FreeMin { get; set; }
 
 

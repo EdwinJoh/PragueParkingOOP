@@ -12,7 +12,7 @@ namespace PragueParkingOOP
 
         public List<ParkingSpot> ParkingList { get; set; } = Configuration.ReadParkingList();
         public Configuration Settings { get; set; } = Configuration.ReadSettingsFromFile();
-        public DialogToUser Message { get; set; }
+        public DialogToUser Message { get; set; } = new DialogToUser();
 
         public ParkingHouse()
         {
@@ -26,37 +26,55 @@ namespace PragueParkingOOP
             {
                 ExpandParkinghouse();
             }
-            Message = new DialogToUser();
+            //Message = new DialogToUser();
         }
-        public void AddCar(string regNum)
+        public void CreateVehicle(string regNum, string type)
         {
-            Car newCar = new Car(regNum);
-            ParkingSpot spot = FirstAvailableSpace(newCar);
-            if (spot != null)
+            switch (type)
             {
-                spot.AddVehicle(newCar);
+                case "Car":
+                    Car newcar = new Car(regNum);
+                    AddVehicle(newcar);
+                    break;
+                case "Mc":
+                    MC newMc = new MC(regNum);
+                    AddVehicle(newMc);
+                    break;
+                case "Bike":
+                    Bike newBike = new Bike(regNum);
+                    AddVehicle(newBike);
+                    break;
+                case "Bus":
+                    Bus newBus = new Bus(regNum);
+                    AddVehicle(newBus);
+                    break;
+                default:
+                    break;
+            }
+
+
+        }
+        public bool AddVehicle(Vehicle vehicle)
+        {
+            var set = Configuration.ReadSettingsFromFile();
+            ParkingSpot spot = FirstAvailableSpace(vehicle);//borde ha en metod som kollar detta
+            if (spot != null && vehicle.size <= set.ParkingSpotSize)
+            {
+                spot.AddVehicle(vehicle);
                 Settings.UpdateParkingList(ParkingList);
                 Message.SuccsessMessage("Parked", spot);
+                return true;
+            }
+            else if(spot != null && vehicle.size >set.ParkingSpotSize)
+            {
+                return true;
             }
             else
             {
                 Message.ParkinghouseFull();
+
             }
-        }
-        public void AddMc(string regNum)
-        {
-            MC newMc = new MC(regNum);
-            ParkingSpot spot = FirstAvailableSpace(newMc);
-            if (spot != null)
-            {
-                spot.AddVehicle(newMc);
-                Settings.UpdateParkingList(ParkingList);
-                Message.SuccsessMessage("Parked", spot);
-            }
-            else
-            {
-                Message.ParkinghouseFull();
-            }
+            return false;
         }
         public bool RemoveVehicle(Vehicle vehicle, ParkingSpot spot, out int price)
         {

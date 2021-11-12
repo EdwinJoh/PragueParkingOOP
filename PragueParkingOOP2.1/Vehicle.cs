@@ -8,7 +8,7 @@ namespace PragueParkingOOP
 {
     public class Vehicle
     {
-       
+        
         public string RegNumber { get; set; }
         public int size { get; set; }
         public DateTime TimeIn { get; set; }

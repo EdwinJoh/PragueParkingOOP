@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace PragueParkingOOP
 {
-    internal class Car: Vehicle
+    internal class MC:Vehicle
     {
-        
-        public Car(string aRegnum):base(aRegnum)
+        public MC(string _RegNum):base(_RegNum)
         {
             var settings = Configuration.ReadSettingsFromFile();
-            size = settings.CarSize;
-            Price = settings.CarPrice; 
+
+            Price = settings.McPrice;
+            size = settings.McSize;
            
         }
-        
     }
 }
