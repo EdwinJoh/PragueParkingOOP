@@ -249,6 +249,11 @@ namespace PragueParkingOOP
                     if (newValue > Settings.CarSize)
                     {
                         Settings.CarSize = newValue;
+                        Console.WriteLine(Message.SettingChangeCompleted("Car Size",newValue));
+                    }
+                    else
+                    {
+                        Console.WriteLine(Message.ErrorChangeSettings(newValue));// gör om till ansiconsole
                     }
                     break;
                 case "Mc Size":
@@ -256,17 +261,29 @@ namespace PragueParkingOOP
                     {
                         Settings.McSize = newValue;
                     }
+                    else
+                    {
+                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                    }
                     break;
                 case "Bike Size":
                     if (newValue > Settings.BikeSize)
                     {
                         Settings.BikeSize = newValue;
                     }
+                    else
+                    {
+                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                    }
                     break;
                 case "Bus Size":
-                    if (newValue> Settings.BusSize)
+                    if (newValue > Settings.BusSize)
                     {
                         Settings.BusSize = newValue;
+                    }
+                    else
+                    {
+                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
                     }
                     break;
                 case "Back":
@@ -292,11 +309,19 @@ namespace PragueParkingOOP
                     {
                         Settings.ParkingHouseSize = newValue;
                     }
+                    else
+                    {
+                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                    }
                     break;
                 case "Parkingspot Size":
-                    if (newValue >Settings.ParkingSpotSize)
+                    if (newValue > Settings.ParkingSpotSize)
                     {
                         Settings.ParkingSpotSize = newValue;
+                    }
+                    else
+                    {
+                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
                     }
                     break;
                 case "Back":
@@ -322,6 +347,9 @@ namespace PragueParkingOOP
                     if (newValue > Settings.CarPrice)
                     {
                         Settings.CarPrice = newValue;
+                    }else
+                    {
+                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
                     }
                     break;
                 case "Mc Price":
@@ -329,11 +357,18 @@ namespace PragueParkingOOP
                     {
                         Settings.McPrice = newValue;
                     }
+                    else
+                    {
+                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                    }
                     break;
                 case "Bike Price":
                     if (newValue > Settings.BikePrice)
                     {
                         Settings.BikePrice = newValue;
+                    }else
+                    {
+                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
                     }
                     break;
                 case "Bus Price":
@@ -341,11 +376,18 @@ namespace PragueParkingOOP
                     {
                         Settings.BusPrice = newValue;
                     }
+                    else
+                    {
+                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                    }
                     break;
                 case "Free minutes":
                     if (newValue > Settings.FreeMin)
                     {
                         Settings.FreeMin = newValue;
+                    }else
+                    {
+                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
                     }
                     break;
                 default:

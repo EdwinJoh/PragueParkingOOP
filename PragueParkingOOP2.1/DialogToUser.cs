@@ -96,11 +96,12 @@ namespace PragueParkingOOP
                 table.AddRow(vehicle.RegNumber);
             }
             AnsiConsole.Write(table);
-           
+
         }
-       
+
         public int AskForNewValue()
         {
+
             Console.WriteLine("Changing settings value");// ändra text
             Console.Write("Enter new settings Value: ");
             string userInput = Console.ReadLine();
@@ -108,7 +109,8 @@ namespace PragueParkingOOP
             if (check)
             {
                 return newValue;
-            }else
+            }
+            else
             {
                 var tabel = new Table();
                 tabel.AddColumn($"[red]Something went wrong. Please check your input:{userInput}. It can only be an integer.[/]");
@@ -116,6 +118,13 @@ namespace PragueParkingOOP
             }
             return 0;
         }
-
+        public string ErrorChangeSettings(int value)
+        {
+            return $"There have been an error trying to change the setting. \nValue '{value}' is smaller then the original setting. We can only adjust it to a higher number.";
+        }
+        public string SettingChangeCompleted(string setting, int value)
+        {
+            return $"Settings '{setting}' was succsessfully changed to new value{value}";
+        }
     }
 }
