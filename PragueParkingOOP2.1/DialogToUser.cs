@@ -101,8 +101,8 @@ namespace PragueParkingOOP
        
         public int AskForNewValue()
         {
-            Console.WriteLine(settings);// ändra text
-            Console.Write("Enter new settings Value");
+            Console.WriteLine("Changing settings value");// ändra text
+            Console.Write("Enter new settings Value: ");
             string userInput = Console.ReadLine();
             bool check = int.TryParse(userInput, out int newValue);
             if (check)

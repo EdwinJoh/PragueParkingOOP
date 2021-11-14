@@ -57,7 +57,6 @@ namespace PragueParkingOOP
         }
         public bool AddVehicle(Vehicle vehicle)
         {
-
             ParkingSpot spot = FirstAvailableSpace(vehicle);
             if (spot != null && vehicle.size <= Settings.ParkingSpotSize)
             {
@@ -245,10 +244,7 @@ namespace PragueParkingOOP
                 }
             }
         }
-        public void ChangeSettings()
-        {
-
-        }
+        
 
         public void WriteSettingsToFile(Configuration settings)
         {

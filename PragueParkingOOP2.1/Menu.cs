@@ -181,6 +181,7 @@ namespace PragueParkingOOP
                 }
                 else if (vehicleFound != null && vehicleFound.size > Settings.ParkingSpotSize)
                 {
+
                 }
                 else
                 {
@@ -222,8 +223,8 @@ namespace PragueParkingOOP
                     VehicleSettings();
                     break;
                 case "Parkinghouse Settings":
-                    break;
                     ParkingHouseSettings();
+                    break;
                 case "Price Settings":
                     PriceSettings();
                     break;
@@ -248,24 +249,33 @@ namespace PragueParkingOOP
                     if (newValue > Settings.CarSize)
                     {
                         Settings.CarSize = newValue;
-                        parkingHouse.WriteSettingsToFile(Settings);
                     }
                     break;
                 case "Mc Size":
                     if (newValue > Settings.McSize)
                     {
                         Settings.McSize = newValue;
-                        parkingHouse.WriteSettingsToFile(Settings);
                     }
                     break;
                 case "Bike Size":
+                    if (newValue > Settings.BikeSize)
+                    {
+                        Settings.BikeSize = newValue;
+                    }
                     break;
                 case "Bus Size":
+                    if (newValue> Settings.BusSize)
+                    {
+                        Settings.BusSize = newValue;
+                    }
                     break;
-
+                case "Back":
+                    break;
                 default:
+                    Console.WriteLine("The menu selection does not exist yet");
                     break;
             }
+            parkingHouse.WriteSettingsToFile(Settings);
         }
         public void ParkingHouseSettings()
         {
@@ -274,18 +284,29 @@ namespace PragueParkingOOP
                .Title("[yellow]What Parkinghouse settings would you like to modify?[/]")
                .AddChoices(new[] {
                    "Parkinghouse Size","Parkingspot Size"}));
+            int newValue = Message.AskForNewValue();
             switch (choice)
             {
                 case "Parkinghouse Size":
-
+                    if (newValue > Settings.ParkingHouseSize)
+                    {
+                        Settings.ParkingHouseSize = newValue;
+                    }
                     break;
                 case "Parkingspot Size":
+                    if (newValue >Settings.ParkingSpotSize)
+                    {
+                        Settings.ParkingSpotSize = newValue;
+                    }
                     break;
                 case "Back":
+
                     break;
                 default:
+                    Console.WriteLine("The menu selection does not exist yet");
                     break;
             }
+            parkingHouse.WriteSettingsToFile(Settings);
         }
         public void PriceSettings()
         {
@@ -294,21 +315,44 @@ namespace PragueParkingOOP
               .Title("[yellow]What Price settings would you like to modify?[/]")
               .AddChoices(new[] {
                   "Car Price","Mc Price","Bike Price","Bus Price","Free minutes"}));
+            int newValue = Message.AskForNewValue();
             switch (choice)
             {
                 case "Car Price":
+                    if (newValue > Settings.CarPrice)
+                    {
+                        Settings.CarPrice = newValue;
+                    }
                     break;
                 case "Mc Price":
+                    if (newValue > Settings.McPrice)
+                    {
+                        Settings.McPrice = newValue;
+                    }
                     break;
                 case "Bike Price":
+                    if (newValue > Settings.BikePrice)
+                    {
+                        Settings.BikePrice = newValue;
+                    }
                     break;
                 case "Bus Price":
+                    if (newValue > Settings.BusPrice)
+                    {
+                        Settings.BusPrice = newValue;
+                    }
                     break;
                 case "Free minutes":
+                    if (newValue > Settings.FreeMin)
+                    {
+                        Settings.FreeMin = newValue;
+                    }
                     break;
                 default:
+                    Console.WriteLine("The menu selection does not exist yet");
                     break;
             }
+            parkingHouse.WriteSettingsToFile(Settings);
         }
     }
 
