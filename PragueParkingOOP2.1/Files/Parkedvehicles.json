@@ -1,509 +1,616 @@
 [
   {
+    "vehicles": [],
+    "AvailableSize": 4,
+    "SpotNumber": 1,
+    "Status": ""
+  },
+  {
     "vehicles": [
       {
-        "RegNumber": "HEJ123",
+        "RegNumber": "JEJ123",
         "size": 4,
-        "TimeIn": "2021-11-12T15:18:11.3690468+01:00",
+        "TimeIn": "2021-11-14T07:28:49.4754769+01:00",
         "Price": 20
       }
     ],
     "AvailableSize": 0,
-    "SpotNumber": 1
+    "SpotNumber": 2,
+    "Status": ""
   },
   {
-    "vehicles": [],
-    "AvailableSize": 4,
-    "SpotNumber": 2
-  },
-  {
-    "vehicles": [],
-    "AvailableSize": 4,
-    "SpotNumber": 3
+    "vehicles": [
+      {
+        "RegNumber": "KEK123",
+        "size": 4,
+        "TimeIn": "2021-11-14T08:19:20.5543018+01:00",
+        "Price": 20
+      }
+    ],
+    "AvailableSize": 0,
+    "SpotNumber": 3,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 4
+    "SpotNumber": 4,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 5
+    "SpotNumber": 5,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 6
+    "SpotNumber": 6,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 7
+    "SpotNumber": 7,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 8
+    "SpotNumber": 8,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 9
+    "SpotNumber": 9,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 10
+    "SpotNumber": 10,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 11
+    "SpotNumber": 11,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 12
+    "SpotNumber": 12,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 13
+    "SpotNumber": 13,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 14
+    "SpotNumber": 14,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 15
+    "SpotNumber": 15,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 16
+    "SpotNumber": 16,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 17
+    "SpotNumber": 17,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 18
+    "SpotNumber": 18,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 19
+    "SpotNumber": 19,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 20
+    "SpotNumber": 20,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 21
+    "SpotNumber": 21,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 22
+    "SpotNumber": 22,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 23
+    "SpotNumber": 23,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 24
+    "SpotNumber": 24,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 25
+    "SpotNumber": 25,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 26
+    "SpotNumber": 26,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 27
+    "SpotNumber": 27,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 28
+    "SpotNumber": 28,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 29
+    "SpotNumber": 29,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 30
+    "SpotNumber": 30,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 31
+    "SpotNumber": 31,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 32
+    "SpotNumber": 32,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 33
+    "SpotNumber": 33,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 34
+    "SpotNumber": 34,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 35
+    "SpotNumber": 35,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 36
+    "SpotNumber": 36,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 37
+    "SpotNumber": 37,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 38
+    "SpotNumber": 38,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 39
+    "SpotNumber": 39,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 40
+    "SpotNumber": 40,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 41
+    "SpotNumber": 41,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 42
+    "SpotNumber": 42,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 43
+    "SpotNumber": 43,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 44
+    "SpotNumber": 44,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 45
+    "SpotNumber": 45,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 46
+    "SpotNumber": 46,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 47
+    "SpotNumber": 47,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 48
+    "SpotNumber": 48,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 49
+    "SpotNumber": 49,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 50
+    "SpotNumber": 50,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 51
+    "SpotNumber": 51,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 52
+    "SpotNumber": 52,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 53
+    "SpotNumber": 53,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 54
+    "SpotNumber": 54,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 55
+    "SpotNumber": 55,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 56
+    "SpotNumber": 56,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 57
+    "SpotNumber": 57,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 58
+    "SpotNumber": 58,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 59
+    "SpotNumber": 59,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 60
+    "SpotNumber": 60,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 61
+    "SpotNumber": 61,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 62
+    "SpotNumber": 62,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 63
+    "SpotNumber": 63,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 64
+    "SpotNumber": 64,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 65
+    "SpotNumber": 65,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 66
+    "SpotNumber": 66,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 67
+    "SpotNumber": 67,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 68
+    "SpotNumber": 68,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 69
+    "SpotNumber": 69,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 70
+    "SpotNumber": 70,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 71
+    "SpotNumber": 71,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 72
+    "SpotNumber": 72,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 73
+    "SpotNumber": 73,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 74
+    "SpotNumber": 74,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 75
+    "SpotNumber": 75,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 76
+    "SpotNumber": 76,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 77
+    "SpotNumber": 77,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 78
+    "SpotNumber": 78,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 79
+    "SpotNumber": 79,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 80
+    "SpotNumber": 80,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 81
+    "SpotNumber": 81,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 82
+    "SpotNumber": 82,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 83
+    "SpotNumber": 83,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 84
+    "SpotNumber": 84,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 85
+    "SpotNumber": 85,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 86
+    "SpotNumber": 86,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 87
+    "SpotNumber": 87,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 88
+    "SpotNumber": 88,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 89
+    "SpotNumber": 89,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 90
+    "SpotNumber": 90,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 91
+    "SpotNumber": 91,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 92
+    "SpotNumber": 92,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 93
+    "SpotNumber": 93,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 94
+    "SpotNumber": 94,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 95
+    "SpotNumber": 95,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 96
+    "SpotNumber": 96,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 97
+    "SpotNumber": 97,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 98
+    "SpotNumber": 98,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 99
+    "SpotNumber": 99,
+    "Status": ""
   },
   {
     "vehicles": [],
     "AvailableSize": 4,
-    "SpotNumber": 100
+    "SpotNumber": 100,
+    "Status": ""
   }
 ]

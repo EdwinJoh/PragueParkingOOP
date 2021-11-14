@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Newtonsoft.Json.Converters;
 
 namespace PragueParkingOOP
 {
     public class Configuration
     {
-        private const string configPath = @"../../../Files/ConfigSettings.json";
+        
         private const string ParkingListPath = @"../../../Files/Parkedvehicles.json";
         private const string PriceListPath = @"../../../Files/PriceList.txt";
         public int ParkingSpotSize { get; set; }        // [DEFAULT]  4
@@ -29,7 +30,7 @@ namespace PragueParkingOOP
 
         public static Configuration? ReadSettingsFromFile(string filePath = "../../../Files/ConfigSettings.json")
         {
-           
+
             if (File.Exists(filePath))
             {
                 string settingsJson = File.ReadAllText(filePath);
@@ -40,10 +41,7 @@ namespace PragueParkingOOP
             {
                 throw new Exception("File does not exist");
                 //Skapa en ny tom lista åt användaren
-               
-                
             }
-            
         }
         public static List<ParkingSpot>? ReadParkingList()
         {
@@ -61,6 +59,7 @@ namespace PragueParkingOOP
             List<string> priceFile = File.ReadAllLines(PriceListPath).ToList();
             return priceFile;
         }
+       
     }
 }
 

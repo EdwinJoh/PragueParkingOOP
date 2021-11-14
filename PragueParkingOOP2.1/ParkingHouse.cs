@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace PragueParkingOOP
             {
                 ExpandParkinghouse();
             }
-            //Message = new DialogToUser();
+
         }
         public void CreateVehicle(string regNum, string type)
         {
@@ -56,18 +57,20 @@ namespace PragueParkingOOP
         }
         public bool AddVehicle(Vehicle vehicle)
         {
-            var set = Configuration.ReadSettingsFromFile();
+
             ParkingSpot spot = FirstAvailableSpace(vehicle);
-            if (spot != null && vehicle.size <= set.ParkingSpotSize)
+            if (spot != null && vehicle.size <= Settings.ParkingSpotSize)
             {
                 spot.AddVehicle(vehicle);
                 Settings.UpdateParkingList(ParkingList);
                 Message.SuccsessMessage("Parked", spot);
                 return true;
             }
-            else if (spot != null && vehicle.size > set.ParkingSpotSize)
+            else if (spot != null && vehicle.size > Settings.ParkingSpotSize)
             {
-
+                spot.Addlargevehicle(vehicle);
+                Settings.UpdateParkingList(ParkingList);
+                Message.SuccsessMessage("Parked", spot);
                 return true;
             }
             else
@@ -79,47 +82,58 @@ namespace PragueParkingOOP
         }
         public bool RemoveVehicle(Vehicle vehicle, ParkingSpot spot, out int price)
         {
-
+            var set = new Configuration();
             string checkIn = vehicle.TimeIn.ToString();
             CalculatePrice(checkIn, vehicle, out price);
-            spot.Remove(vehicle);
-            Settings.UpdateParkingList(ParkingList);
-            return true;
-
-            price = 0;
-            return false;
+            if (vehicle.size <= Settings.ParkingSpotSize)
+            {
+                spot.Remove(vehicle);
+                Settings.UpdateParkingList(ParkingList);
+                return true;
+            }
+            else
+            {
+                spot.RemoveLargeVehicle(vehicle);
+                FreeSpaceLargeVehicle(vehicle);
+                Settings.UpdateParkingList(ParkingList);
+                return true;
+            }
         }
         public ParkingSpot FirstAvailableSpace(Vehicle vehicle)
         {
             List<ParkingSpot> Templist = new List<ParkingSpot>();
-            var set = Configuration.ReadSettingsFromFile();
-            if (vehicle.size <= set.ParkingSpotSize)
+
+            if (vehicle.size <= Settings.ParkingSpotSize)
             {
                 ParkingSpot spot = ParkingList.Find(x => x.AvailableSize >= vehicle.size);
+                return spot;
             }
             else
             {
-                for (int i = 0; i < set.SpacesForLargeVehicle; i++)
+                for (int i = 0; i < Settings.SpacesForLargeVehicle; i++)
                 {
-                    if (ParkingList[i].AvailableSize == set.ParkingSpotSize)
+                    if (ParkingList[i].AvailableSize == Settings.ParkingSpotSize)
                     {
                         Templist.Add(ParkingList[i]);
                     }
-                    else if (ParkingList[i].AvailableSize < set.ParkingSpotSize)
+                    else if (ParkingList[i].AvailableSize < Settings.ParkingSpotSize)
                     {
                         Templist.Clear();
                         continue;
                     }
-                    if (Templist.Count == vehicle.size / set.ParkingSpotSize)
+                    if (Templist.Count == vehicle.size / Settings.ParkingSpotSize)
                     {
                         foreach (var spots in Templist)
                         {
-
+                            spots.Status = vehicle.RegNumber;
+                            spots.AvailableSize -= Settings.ParkingSpotSize;
                         }
+                        return ParkingList[i];
                     }
                 }
+
             }
-            
+
             return null;
         }
         public void NewParkingHouse()
@@ -185,8 +199,7 @@ namespace PragueParkingOOP
         {
 
             TimeSpan span = DateTime.Now - vehicle.TimeIn;
-            Configuration? set = Configuration.ReadSettingsFromFile();
-            if (span.TotalMinutes <= set.FreeMin)
+            if (span.TotalMinutes <= Settings.FreeMin)
             {
                 price = 0;
             }
@@ -220,6 +233,33 @@ namespace PragueParkingOOP
                 }
             }
             return list;
+        }
+        public void FreeSpaceLargeVehicle(Vehicle vehicle)
+        {
+            foreach (var spot in ParkingList)
+            {
+                if (spot.Status == vehicle.RegNumber)
+                {
+                    spot.Status = "";
+                    spot.AvailableSize = Settings.ParkingSpotSize;
+                }
+            }
+        }
+        public void ChangeSettings()
+        {
+
+        }
+
+        public void WriteSettingsToFile(Configuration settings)
+        {
+            JsonSerializer serializer = new JsonSerializer();//// läs på om vad denna gör 
+            serializer.Converters.Add(new JavaScriptDateTimeConverter());
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+            string parkingHouseString = JsonConvert.SerializeObject(settings, Formatting.Indented);
+            using (StreamWriter writer = new StreamWriter(@"../../../Files/ConfigSettings.json"))
+            {
+                writer.Write(parkingHouseString);
+            }
         }
     }
 

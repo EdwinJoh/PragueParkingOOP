@@ -16,7 +16,7 @@ namespace PragueParkingOOP
         {
             var set = Configuration.ReadSettingsFromFile();
             AvailableSize = set.ParkingSpotSize;
-            Status = null;                  // standard value
+            Status = "";                  // standard value
 
         }
         public bool AddVehicle(Vehicle vehicle)
@@ -31,6 +31,16 @@ namespace PragueParkingOOP
             AvailableSize += vehicle.size;
             return true;
         }
-        
+        public bool Addlargevehicle(Vehicle vehicle)
+        {
+            vehicles.Add(vehicle);
+            return true;
+        }
+        public bool RemoveLargeVehicle(Vehicle vehicle)
+        {
+           
+            vehicles.Remove(vehicle);
+            return true;
+        }
     }
 }

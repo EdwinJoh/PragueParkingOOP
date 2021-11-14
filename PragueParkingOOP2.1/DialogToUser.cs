@@ -10,6 +10,8 @@ namespace PragueParkingOOP
 {
     public class DialogToUser
     {
+        //public Menu menu;
+        public Menu menu { get; set; }
         public Configuration? settings { get; set; } = Configuration.ReadSettingsFromFile();
         public void SuccsessMessage(string option, ParkingSpot spot)
         {
@@ -94,8 +96,25 @@ namespace PragueParkingOOP
                 table.AddRow(vehicle.RegNumber);
             }
             AnsiConsole.Write(table);
-            table.AddColumn(new TableColumn("[grey]Parked Vehicles[/]").Centered()).Alignment(Justify.Center);
-            AnsiConsole.Write(table);
+           
+        }
+       
+        public int AskForNewValue()
+        {
+            Console.WriteLine(settings);// ändra text
+            Console.Write("Enter new settings Value");
+            string userInput = Console.ReadLine();
+            bool check = int.TryParse(userInput, out int newValue);
+            if (check)
+            {
+                return newValue;
+            }else
+            {
+                var tabel = new Table();
+                tabel.AddColumn($"[red]Something went wrong. Please check your input:{userInput}. It can only be an integer.[/]");
+                AnsiConsole.Write(tabel);
+            }
+            return 0;
         }
 
     }
