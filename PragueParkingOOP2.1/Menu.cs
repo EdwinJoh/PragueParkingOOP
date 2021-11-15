@@ -179,7 +179,7 @@ namespace PragueParkingOOP
                 {
                     return true;
                 }
-                else if (vehicleFound != null && vehicleFound.size > Settings.ParkingSpotSize)
+                else if (vehicleFound != null && vehicleFound.size > Settings.ParkingSpotSize && parkingHouse.MoveVehicle(vehicleFound, spot))
                 {
 
                 }

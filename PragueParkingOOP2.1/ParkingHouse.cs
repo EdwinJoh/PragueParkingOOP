@@ -93,7 +93,7 @@ namespace PragueParkingOOP
             else
             {
                 spot.RemoveLargeVehicle(vehicle);
-                FreeSpaceLargeVehicle(vehicle);
+                ResetLargeVehicleSpace(vehicle);
                 Settings.UpdateParkingList(ParkingList);
                 return true;
             }
@@ -152,16 +152,20 @@ namespace PragueParkingOOP
         public bool MoveVehicle(Vehicle vehicle, ParkingSpot oldSpot)
         {
             Message.AskForNewSpot(out int newSpot);
-            if (newSpot != 0)
+            if (newSpot != 0 && vehicle.size <= Settings.ParkingSpotSize)
             {
                 if (CheckNewSpot(newSpot, vehicle, out ParkingSpot spot))
                 {
-                    RemoveVehicle(vehicle, oldSpot, out int price);
+                    RemoveVehicle(vehicle, oldSpot, out _);
                     spot.AddVehicle(vehicle);
                     Settings.UpdateParkingList(ParkingList);
                     Message.SuccsessMessage("Moved", spot);
                     return true;
                 }
+            }
+            else
+            {
+                CheckSpotsInRows(vehicle, newSpot, out ParkingSpot newspot);
             }
             return false;
         }
@@ -233,7 +237,7 @@ namespace PragueParkingOOP
             }
             return list;
         }
-        public void FreeSpaceLargeVehicle(Vehicle vehicle)
+        public void ResetLargeVehicleSpace(Vehicle vehicle)
         {
             foreach (var spot in ParkingList)
             {
@@ -244,8 +248,37 @@ namespace PragueParkingOOP
                 }
             }
         }
-        
 
+        public bool CheckSpotsInRows(Vehicle vehicle, int newSpot,out ParkingSpot newspot)
+        {
+            List<ParkingSpot> TempList = new List<ParkingSpot>();
+            for (int i = newSpot; i < ParkingList.Count; i++)
+            {
+                if (ParkingList[i].AvailableSize == Settings.ParkingSpotSize)
+                {
+                    TempList.Add(ParkingList[i]);
+                }
+                else
+                {
+                    break;
+                }
+                if (TempList.Count == vehicle.size/ Settings.ParkingSpotSize)
+                {
+                    ResetLargeVehicleSpace(vehicle);
+                    foreach (var spots in TempList)
+                    {
+                        spots.AvailableSize -= Settings.ParkingSpotSize;
+                        spots.Status = vehicle.RegNumber;
+                    }
+                    ParkingList[i].Addlargevehicle(vehicle);
+                    newspot = ParkingList[i];
+                    return true;
+                }
+            }
+            newspot = null;
+            return false;
+
+        }
         public void WriteSettingsToFile(Configuration settings)
         {
             JsonSerializer serializer = new JsonSerializer();//// läs på om vad denna gör 
