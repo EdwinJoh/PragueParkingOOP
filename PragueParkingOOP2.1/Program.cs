@@ -2,7 +2,7 @@
 
 using PragueParkingOOP;
 
-var settings = Configuration.ReadSettingsFromFile();
+
 Menu menu = new Menu();
 do
 {

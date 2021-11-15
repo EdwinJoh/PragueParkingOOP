@@ -1,7 +1,14 @@
 [
   {
-    "vehicles": [],
-    "AvailableSize": 4,
+    "vehicles": [
+      {
+        "RegNumber": "HEJ123",
+        "size": 4,
+        "TimeIn": "2021-11-15T13:19:37.2519884+01:00",
+        "Price": 20
+      }
+    ],
+    "AvailableSize": 0,
     "SpotNumber": 1,
     "Status": ""
   },
