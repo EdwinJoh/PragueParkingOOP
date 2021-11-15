@@ -11,8 +11,8 @@ namespace PragueParkingOOP
     public class ParkingHouse
     {
 
-        public List<ParkingSpot> ParkingList { get; set; } = Configuration.ReadParkingList();
-        public Configuration Settings { get; set; } = Configuration.ReadSettingsFromFile();
+        public List<ParkingSpot>? ParkingList { get; set; } = Configuration.ReadParkingList();
+        public Configuration? Settings { get; set; } = Configuration.ReadSettingsFromFile();
         public DialogToUser Message { get; set; } = new DialogToUser();
 
         public ParkingHouse()

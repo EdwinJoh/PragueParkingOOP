@@ -77,7 +77,7 @@ namespace PragueParkingOOP
         public void SearchSuccses(Vehicle vehicle, ParkingSpot spot)
         {
             var table = new Table();
-            table.AddColumn($"[green]Found vehicle:{vehicle.RegNumber}. Its parked at Parkingspot{spot.SpotNumber}[/] ");
+            table.AddColumn($"[green]Found vehicle:{vehicle.RegNumber}. Its parked at Parkingspot> {spot.SpotNumber}[/] ");
             AnsiConsole.Write(table);
 
         }
