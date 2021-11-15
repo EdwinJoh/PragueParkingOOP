@@ -1,34 +1,27 @@
 [
   {
     "vehicles": [],
-    "AvailableSize": 0,
+    "AvailableSize": 4,
     "SpotNumber": 1,
-    "Status": "HEJ123"
+    "Status": ""
   },
   {
     "vehicles": [],
-    "AvailableSize": 0,
+    "AvailableSize": 4,
     "SpotNumber": 2,
-    "Status": "HEJ123"
+    "Status": ""
   },
   {
     "vehicles": [],
-    "AvailableSize": 0,
+    "AvailableSize": 4,
     "SpotNumber": 3,
-    "Status": "HEJ123"
+    "Status": ""
   },
   {
-    "vehicles": [
-      {
-        "RegNumber": "HEJ123",
-        "size": 16,
-        "TimeIn": "2021-11-14T20:25:32.7872322+01:00",
-        "Price": 80
-      }
-    ],
-    "AvailableSize": 0,
+    "vehicles": [],
+    "AvailableSize": 4,
     "SpotNumber": 4,
-    "Status": "HEJ123"
+    "Status": ""
   },
   {
     "vehicles": [],

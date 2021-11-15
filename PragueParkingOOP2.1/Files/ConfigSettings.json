@@ -10,5 +10,6 @@
   "BikePrice": 5,
   "BusPrice": 80,
   "FreeMin": 10,
-  "SpacesForLargeVehicle": 46
+  "SpacesForLargeVehicle": 46,
+  "Currency": "CZK"
 }

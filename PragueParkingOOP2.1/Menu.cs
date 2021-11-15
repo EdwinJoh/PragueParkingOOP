@@ -12,8 +12,7 @@ namespace PragueParkingOOP
     {
         public DialogToUser Message { get; set; } = new DialogToUser();
         public ParkingHouse parkingHouse = new ParkingHouse();
-        public Configuration Settings = Configuration.ReadSettingsFromFile();
-
+        public Configuration? Settings = Configuration.ReadSettingsFromFile();
         public string MenuOption()
         {
             Console.Clear();
@@ -26,7 +25,7 @@ namespace PragueParkingOOP
                    .Title("[grey]Prague Parking 2.0[/]")
                    .PageSize(7)
                    .AddChoices(new[] {
-                    "Park Vehicle", "Remove Vehicle", "Move Vehicle", "Prices", "Search Vehicle", "Print Vehicles","Change Settings","Exit Program" }));
+                    "Park Vehicle", "Remove Vehicle", "Move Vehicle", "Prices", "Search Vehicle", "Print Vehicles","Change Settings", "Clear Parkinglot","Exit Program" }));
                 return choice;
 
             } while (choice != "Exit Program");
@@ -58,6 +57,9 @@ namespace PragueParkingOOP
                 case "Change Settings":
                     ChangeSettings();
                     break;
+                case "Clear Parkinglot":
+                    parkingHouse.ClearParkingSpots();
+                    break;
                 case "Exit Program":
                     Console.Clear();
                     Console.WriteLine("Exit program...");
@@ -69,10 +71,8 @@ namespace PragueParkingOOP
         }
         private void PrintParkingLot()
         {
-
             Table t1 = new Table();
-
-            t1.AddColumns("[grey]EMPTY SPOT =[/] [green]GREEN[/]", "[grey]FULL SPOT =[/] [red]RED[/]").Centered().Alignment(Justify.Center);
+            t1.AddColumns("[grey]EMPTY SPOT =[/] [green]GREEN[/]", "[grey]HALF OR MORE =[/] [yellow]YELLOW[/]", "[grey]FULL SPOT =[/] [red]RED[/]").Centered().Alignment(Justify.Center);
             AnsiConsole.Write(t1);
             Table newTable = new Table().Centered();
             var parkingSpotColorMarking = "";
@@ -83,6 +83,10 @@ namespace PragueParkingOOP
                 if (parkingHouse.ParkingList[i].AvailableSize == Settings.ParkingSpotSize)
                 {
                     parkingSpotColorMarking = "green";
+                }
+                else if (parkingHouse.ParkingList[i].AvailableSize < Settings.ParkingSpotSize && parkingHouse.ParkingList[i].AvailableSize != 0)
+                {
+                    parkingSpotColorMarking = "yellow";
                 }
                 else
                 {
@@ -127,9 +131,8 @@ namespace PragueParkingOOP
             {
                 Message.ErrorCheckReg(regNumber);
             }
-
         }
-        private string? ValidateRegNumber()
+        private string ValidateRegNumber()
         {
             Console.Write("Enter Registration number:");
             string regNum = Console.ReadLine().ToUpper();
@@ -181,7 +184,7 @@ namespace PragueParkingOOP
                 }
                 else if (vehicleFound != null && vehicleFound.size > Settings.ParkingSpotSize && parkingHouse.MoveVehicle(vehicleFound, spot))
                 {
-
+                    return true;
                 }
                 else
                 {
@@ -249,11 +252,11 @@ namespace PragueParkingOOP
                     if (newValue > Settings.CarSize)
                     {
                         Settings.CarSize = newValue;
-                        Console.WriteLine(Message.SettingChangeCompleted("Car Size",newValue));
+                        Console.WriteLine(Message.SettingChangeCompleted("Car Size", newValue));
                     }
                     else
                     {
-                        Console.WriteLine(Message.ErrorChangeSettings(newValue));// gör om till ansiconsole
+                        Message.ErrorChangeSettings(newValue);// gör om till ansiconsole
                     }
                     break;
                 case "Mc Size":
@@ -263,7 +266,7 @@ namespace PragueParkingOOP
                     }
                     else
                     {
-                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                        Message.ErrorChangeSettings(newValue);
                     }
                     break;
                 case "Bike Size":
@@ -273,7 +276,7 @@ namespace PragueParkingOOP
                     }
                     else
                     {
-                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                        Message.ErrorChangeSettings(newValue);
                     }
                     break;
                 case "Bus Size":
@@ -283,7 +286,7 @@ namespace PragueParkingOOP
                     }
                     else
                     {
-                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                        Message.ErrorChangeSettings(newValue);
                     }
                     break;
                 case "Back":
@@ -311,7 +314,7 @@ namespace PragueParkingOOP
                     }
                     else
                     {
-                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                        Message.ErrorChangeSettings(newValue);
                     }
                     break;
                 case "Parkingspot Size":
@@ -321,7 +324,7 @@ namespace PragueParkingOOP
                     }
                     else
                     {
-                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                        Message.ErrorChangeSettings(newValue);
                     }
                     break;
                 case "Back":
@@ -347,9 +350,10 @@ namespace PragueParkingOOP
                     if (newValue > Settings.CarPrice)
                     {
                         Settings.CarPrice = newValue;
-                    }else
+                    }
+                    else
                     {
-                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                        Message.ErrorChangeSettings(newValue);
                     }
                     break;
                 case "Mc Price":
@@ -359,16 +363,17 @@ namespace PragueParkingOOP
                     }
                     else
                     {
-                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                        Message.ErrorChangeSettings(newValue);
                     }
                     break;
                 case "Bike Price":
                     if (newValue > Settings.BikePrice)
                     {
                         Settings.BikePrice = newValue;
-                    }else
+                    }
+                    else
                     {
-                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                        Message.ErrorChangeSettings(newValue);
                     }
                     break;
                 case "Bus Price":
@@ -378,16 +383,17 @@ namespace PragueParkingOOP
                     }
                     else
                     {
-                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                        Message.ErrorChangeSettings(newValue);
                     }
                     break;
                 case "Free minutes":
                     if (newValue > Settings.FreeMin)
                     {
                         Settings.FreeMin = newValue;
-                    }else
+                    }
+                    else
                     {
-                        Console.WriteLine(Message.ErrorChangeSettings(newValue));
+                        Message.ErrorChangeSettings(newValue);
                     }
                     break;
                 default:

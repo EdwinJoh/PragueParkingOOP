@@ -10,8 +10,6 @@ namespace PragueParkingOOP
 {
     public class DialogToUser
     {
-        //public Menu menu;
-        public Menu menu { get; set; }
         public Configuration? settings { get; set; } = Configuration.ReadSettingsFromFile();
         public void SuccsessMessage(string option, ParkingSpot spot)
         {
@@ -30,14 +28,13 @@ namespace PragueParkingOOP
             var tabel = new Table();
             tabel.AddColumn($"[red]Something went wrong. Check if {regNum} is parked here or if there is any special characters in the regnumber[/]");
             AnsiConsole.Write(tabel);
-
         }
         public int AskForNewSpot(out int newSpot)
         {
             Console.Write("Enter new ParkingSpot:");
             string userInput = Console.ReadLine();
             bool check = int.TryParse(userInput, out newSpot);
-            if (check)
+            if (check && newSpot != 0)
             {
                 return newSpot;
             }
@@ -52,7 +49,7 @@ namespace PragueParkingOOP
         public void PriceMessage(int price)
         {
             var table = new Table();
-            table.AddColumn($"[green]Price to pay :{price}[/] ");
+            table.AddColumn($"[green]Price to pay :{price}:{settings.Currency}[/] ");
             AnsiConsole.Write(table); ;
         }
         public void PrintPriceList()
@@ -60,7 +57,7 @@ namespace PragueParkingOOP
             List<string> prices = settings.ReadPriceFile();
             var table = new Table();
             table.Expand();
-            table.AddColumn(new TableColumn(new Markup("[yellow] PRICE LIST[/]").Alignment(Justify.Center)));
+            table.AddColumn(new TableColumn(new Markup("[yellow] PRICE LIST [/]").Alignment(Justify.Center)));
             foreach (var price in prices)
             {
                 table.AddRow(price);
@@ -96,12 +93,9 @@ namespace PragueParkingOOP
                 table.AddRow(vehicle.RegNumber);
             }
             AnsiConsole.Write(table);
-
         }
-
         public int AskForNewValue()
         {
-
             Console.WriteLine("Changing settings value");// ändra text
             Console.Write("Enter new settings Value: ");
             string userInput = Console.ReadLine();
@@ -118,13 +112,22 @@ namespace PragueParkingOOP
             }
             return 0;
         }
-        public string ErrorChangeSettings(int value)
+        public void ErrorChangeSettings(int value)
         {
-            return $"There have been an error trying to change the setting. \nValue '{value}' is smaller then the original setting. We can only adjust it to a higher number.";
+            var table = new Table();
+            table.AddColumn($"[red]There have been an error trying to change the setting. \nValue '{value}' is smaller then the original setting. We can only adjust it to a higher number.[/] ");
+            AnsiConsole.Write(table);
+            
         }
         public string SettingChangeCompleted(string setting, int value)
         {
             return $"Settings '{setting}' was succsessfully changed to new value{value}";
+        }
+        public void BigVehiceSuccsess(string option, int newspot, ParkingSpot spot)
+        {
+            var table = new Table();
+            table.AddColumn($"[green] We succsesfully {option} your vehicle! Parked at parkingspot:{newspot}-{+spot.SpotNumber}[/] ");
+            AnsiConsole.Write(table);
         }
     }
 }

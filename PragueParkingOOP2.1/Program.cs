@@ -10,6 +10,5 @@ do
 
 } while (true);
 
-//TODO: Fixa flytta buss
-//TODO: Kolla igenom koden så allt grafisk är correct
-//TODO: Fixa clear all parkingspots metod
+//TODO : Kommentera koden
+

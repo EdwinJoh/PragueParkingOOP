@@ -52,8 +52,6 @@ namespace PragueParkingOOP
                 default:
                     break;
             }
-
-
         }
         public bool AddVehicle(Vehicle vehicle)
         {
@@ -165,7 +163,13 @@ namespace PragueParkingOOP
             }
             else
             {
-                CheckSpotsInRows(vehicle, newSpot, out ParkingSpot newspot);
+                if (newSpot <= Settings.SpacesForLargeVehicle && CheckSpotsInRows(vehicle, newSpot, out ParkingSpot spot))
+                {
+                    spot.Addlargevehicle(vehicle);
+                    Settings.UpdateParkingList(ParkingList);
+                    Message.BigVehiceSuccsess("Moved", newSpot, spot);
+                    return true;
+                }
             }
             return false;
         }
@@ -185,7 +189,8 @@ namespace PragueParkingOOP
         }
         public (Vehicle?, ParkingSpot?) ExistRegnumber(string RegNumber)
         {
-            foreach (var spot in ParkingList)
+
+            foreach (ParkingSpot spot in ParkingList)
             {
                 foreach (Vehicle vehicle in spot.vehicles)
                 {
@@ -248,36 +253,43 @@ namespace PragueParkingOOP
                 }
             }
         }
-
-        public bool CheckSpotsInRows(Vehicle vehicle, int newSpot,out ParkingSpot newspot)
+        public bool CheckSpotsInRows(Vehicle vehicle, int newSpot, out ParkingSpot NewSpot)
         {
-            List<ParkingSpot> TempList = new List<ParkingSpot>();
-            for (int i = newSpot; i < ParkingList.Count; i++)
+
+            List<ParkingSpot> tempSpots = new List<ParkingSpot>();
+
+            for (int i = newSpot - 1; i < ParkingList.Count; i++)
             {
                 if (ParkingList[i].AvailableSize == Settings.ParkingSpotSize)
                 {
-                    TempList.Add(ParkingList[i]);
+                    tempSpots.Add(ParkingList[i]);
+                }
+                else if (ParkingList[i].Status == vehicle.RegNumber)
+                {
+                    tempSpots.Add(ParkingList[i]);
                 }
                 else
                 {
-                    break;
+                    tempSpots.Clear();
+                    NewSpot = null;
+                    return false;
                 }
-                if (TempList.Count == vehicle.size/ Settings.ParkingSpotSize)
+                if (tempSpots.Count == vehicle.size / Settings.ParkingSpotSize)
                 {
                     ResetLargeVehicleSpace(vehicle);
-                    foreach (var spots in TempList)
+                    foreach (var spot in tempSpots)
                     {
-                        spots.AvailableSize -= Settings.ParkingSpotSize;
-                        spots.Status = vehicle.RegNumber;
+                        spot.AvailableSize -= Settings.ParkingSpotSize;
+                        spot.Status = vehicle.RegNumber;
+
                     }
-                    ParkingList[i].Addlargevehicle(vehicle);
-                    newspot = ParkingList[i];
+                    NewSpot = ParkingList[i];
                     return true;
                 }
             }
-            newspot = null;
-            return false;
 
+            NewSpot = null;
+            return true;
         }
         public void WriteSettingsToFile(Configuration settings)
         {
@@ -290,6 +302,17 @@ namespace PragueParkingOOP
                 writer.Write(parkingHouseString);
             }
         }
+        public void ClearParkingSpots()
+        {
+            foreach (var spot in ParkingList)
+            {
+                if (spot.AvailableSize != Settings.ParkingSpotSize)
+                {
+                    spot.AvailableSize = Settings.ParkingSpotSize;
+                    spot.Status = "";
+                    spot.vehicles.Clear();
+                }
+            }
+        }
     }
-
 }

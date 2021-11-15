@@ -14,7 +14,7 @@ namespace PragueParkingOOP
         
         private const string ParkingListPath = @"../../../Files/Parkedvehicles.json";
         private const string PriceListPath = @"../../../Files/PriceList.txt";
-        public int ParkingSpotSize { get; set; }        // [DEFAULT]  4
+        public int ParkingSpotSize { get; set; }            // [DEFAULT]  4
         public int ParkingHouseSize { get; set; }           // [DEFAULT]  100
         public int McSize { get; set; }
         public int CarSize { get; set; }
@@ -26,9 +26,10 @@ namespace PragueParkingOOP
         public int BusPrice { get; set; }
         public int FreeMin { get; set; }
         public int SpacesForLargeVehicle { get; set; }
+        public string? Currency { get; set; }
 
 
-        public static Configuration? ReadSettingsFromFile(string filePath = "../../../Files/ConfigSettings.json")
+        internal static Configuration? ReadSettingsFromFile(string filePath = "../../../Files/ConfigSettings.json")
         {
 
             if (File.Exists(filePath))
@@ -40,21 +41,21 @@ namespace PragueParkingOOP
             else
             {
                 throw new Exception("File does not exist");
-                //Skapa en ny tom lista åt användaren
+                //TODO: Skapa en ny tom lista åt användaren
             }
         }
-        public static List<ParkingSpot>? ReadParkingList()
+        internal static List<ParkingSpot>? ReadParkingList()
         {
             string temp = File.ReadAllText(ParkingListPath);
             var Templist = JsonConvert.DeserializeObject<List<ParkingSpot>>(temp);
             return Templist;
         }
-        public void UpdateParkingList<T>(List<T> list)
+        internal void UpdateParkingList<T>(List<T> list)
         {
             string parkingHouse = JsonConvert.SerializeObject(list, Formatting.Indented);
             File.WriteAllText(ParkingListPath, parkingHouse);
         }
-        public List<string> ReadPriceFile()
+        internal List<string> ReadPriceFile()
         {
             List<string> priceFile = File.ReadAllLines(PriceListPath).ToList();
             return priceFile;
