@@ -180,15 +180,8 @@
     "SpotNumber": 32
   },
   {
-    "vehicles": [
-      {
-        "RegNumber": "HEJ123",
-        "size": 4,
-        "TimeIn": "2021-11-12T13:19:06.3624522+01:00",
-        "Price": 20
-      }
-    ],
-    "AvailableSize": 0,
+    "vehicles": [],
+    "AvailableSize": 4,
     "SpotNumber": 33
   },
   {

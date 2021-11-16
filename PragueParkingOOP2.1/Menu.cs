@@ -10,9 +10,13 @@ namespace PragueParkingOOP
 {
     public class Menu
     {
-        public DialogToUser Message { get; set; } = new DialogToUser();
-        public ParkingHouse parkingHouse = new ParkingHouse();
-        public Configuration? Settings = Configuration.ReadSettingsFromFile();
+        /// <summary>
+        /// Here we have our main class. We have out method for out chooises in the menu selection
+        /// and forward us to the other classes depending on what we choose to do.
+        /// </summary>
+        public DialogToUser Message { get; set; } = new DialogToUser();             // Instance our dialog class to reach our method from that class
+        public ParkingHouse parkingHouse = new ParkingHouse();                      // Creating the parkinghouse when we starting the program
+        public Configuration? Settings = Configuration.ReadSettingsFromFile();      // Instance our settings class to reach our sizes and and method from the settings class
         public string MenuOption()
         {
             Console.Clear();
@@ -23,15 +27,15 @@ namespace PragueParkingOOP
                 choice = AnsiConsole.Prompt(
                    new SelectionPrompt<string>()
                    .Title("[grey]Prague Parking 2.0[/]")
-                   .PageSize(7)
+                   .PageSize(10)
                    .AddChoices(new[] {
-                    "Park Vehicle", "Remove Vehicle", "Move Vehicle", "Prices", "Search Vehicle", "Print Vehicles","Change Settings", "Clear Parkinglot","Exit Program" }));
+                    "Park Vehicle", "Remove Vehicle", "Move Vehicle", "Prices", "Search Vehicle",
+                    "Print Vehicles","Change Settings", "Clear Parkinglot","Exit Program" }));
                 return choice;
 
             } while (choice != "Exit Program");
-
         }
-        public void MenuSelection()
+        public void MenuSelection()                                                 // Menu selection
         {
             string menuChoise = MenuOption();
             switch (menuChoise)
@@ -66,13 +70,16 @@ namespace PragueParkingOOP
                     Thread.Sleep(1500);
                     Environment.Exit(1);
                     break;
+                default:
+                    Console.WriteLine("Case is not created yet");
+                    break;
             }
             Thread.Sleep(2500);
         }
-        private void PrintParkingLot()
+        private void PrintParkingLot()                                              // Printing out an overlay of the parkinlot
         {
             Table t1 = new Table();
-            t1.AddColumns("[grey]EMPTY SPOT =[/] [green]GREEN[/]", "[grey]HALF OR MORE =[/] [yellow]YELLOW[/]", "[grey]FULL SPOT =[/] [red]RED[/]").Centered().Alignment(Justify.Center);
+            t1.AddColumns("[grey]EMPTY SPOT =[/] [green]GREEN[/]", "[grey]LESS THEN FULL =[/] [yellow]YELLOW[/]", "[grey]FULL SPOT =[/] [red]RED[/]").Centered().Alignment(Justify.Center);
             AnsiConsole.Write(t1);
             Table newTable = new Table().Centered();
             var parkingSpotColorMarking = "";
@@ -97,10 +104,10 @@ namespace PragueParkingOOP
             newTable.AddColumn(new TableColumn(printResult));
             AnsiConsole.Write(newTable);
         }
-        public void ParkVehicleType()
+        public void ParkVehicleType()                                               // Menu Selection for parking vehicles, user choose what type of vehicle they want to park
         {
             var regNumber = ValidateRegNumber();
-            (Vehicle? notFound, ParkingSpot? spot) = parkingHouse.ExistRegnumber(regNumber);// ?= value can be null
+            (Vehicle? notFound, ParkingSpot? spot) = parkingHouse.ExistRegnumber(regNumber);
             if (regNumber != null && notFound == null)
             {
                 var choice = AnsiConsole.Prompt(
@@ -146,7 +153,7 @@ namespace PragueParkingOOP
 
             }
             return null;
-        }
+        }                                       // Regex for checking the validation of the user input of a regnumber
         public bool RemoveVehicle()
         {
             var regNum = ValidateRegNumber();
@@ -171,7 +178,7 @@ namespace PragueParkingOOP
                 Message.ErrorCheckReg(regNum);
             }
             return false;
-        }
+        }                                              // Removing vehicle from the parkiglot 
         public bool MoveVehicle()
         {
             var RegNumber = ValidateRegNumber();
@@ -197,7 +204,7 @@ namespace PragueParkingOOP
             }
 
             return false;
-        }
+        }                                                // Moving vehicle to an diffrent parking spot in the program
         public void SearchVehicle()
         {
             var regNumber = ValidateRegNumber();
@@ -210,15 +217,14 @@ namespace PragueParkingOOP
             {
                 Message.ErrorCheckReg(regNumber);
             }
-        }
-        public string ChangeSettings()
+        }                                              // Searching for an parked vehicle and see where its parked
+        public string ChangeSettings()                                              // Change setting in the program, sizes, price etc
         {
-
             string choice = AnsiConsole.Prompt(
-                  new SelectionPrompt<string>()
-                  .Title("[yellow]What setting would you like to modify?[/]")
-                  .AddChoices(new[] {
-                    "Vehicle Settings","Parkinghouse Settings","Price Settings"}));
+      new SelectionPrompt<string>()
+      .Title("[yellow]What setting would you like to modify?[/]")
+      .AddChoices(new[] {
+                    "Vehicle Settings","Parkinghouse Settings","Price Settings","Back"}));
             switch (choice)
             {
                 case "Vehicle Settings":
@@ -231,11 +237,13 @@ namespace PragueParkingOOP
                 case "Price Settings":
                     PriceSettings();
                     break;
+                case"Back":
+                    Console.WriteLine("Returning back...");
+                    break;
                 default:
                     break;
             }
             return choice;
-
         }
         public void VehicleSettings()
         {
@@ -244,7 +252,7 @@ namespace PragueParkingOOP
                 new SelectionPrompt<string>()
                 .Title("[yellow]What Vehicle settings would you like to modify?[/]")
                 .AddChoices(new[] {
-                   "Car Size" ,"Mc Size","Bike Size","Bus Size"}));
+                   "Car Size" ,"Mc Size","Bike Size","Bus Size","Back"}));
             int newValue = Message.AskForNewValue();
             switch (choice)
             {
@@ -253,6 +261,7 @@ namespace PragueParkingOOP
                     {
                         Settings.CarSize = newValue;
                         Console.WriteLine(Message.SettingChangeCompleted("Car Size", newValue));
+                        
                     }
                     else
                     {
@@ -263,6 +272,7 @@ namespace PragueParkingOOP
                     if (newValue > Settings.McSize)
                     {
                         Settings.McSize = newValue;
+                        Console.WriteLine(Message.SettingChangeCompleted("Mc Size", newValue));
                     }
                     else
                     {
@@ -273,6 +283,7 @@ namespace PragueParkingOOP
                     if (newValue > Settings.BikeSize)
                     {
                         Settings.BikeSize = newValue;
+                        Console.WriteLine(Message.SettingChangeCompleted("Bike Size", newValue));
                     }
                     else
                     {
@@ -283,6 +294,7 @@ namespace PragueParkingOOP
                     if (newValue > Settings.BusSize)
                     {
                         Settings.BusSize = newValue;
+                        Console.WriteLine(Message.SettingChangeCompleted("Bus Size", newValue));
                     }
                     else
                     {
@@ -290,6 +302,7 @@ namespace PragueParkingOOP
                     }
                     break;
                 case "Back":
+                    Console.WriteLine("Returning back...");
                     break;
                 default:
                     Console.WriteLine("The menu selection does not exist yet");
@@ -303,7 +316,7 @@ namespace PragueParkingOOP
                new SelectionPrompt<string>()
                .Title("[yellow]What Parkinghouse settings would you like to modify?[/]")
                .AddChoices(new[] {
-                   "Parkinghouse Size","Parkingspot Size"}));
+                   "Parkinghouse Size","Parkingspot Size","Back"}));
             int newValue = Message.AskForNewValue();
             switch (choice)
             {
@@ -328,6 +341,7 @@ namespace PragueParkingOOP
                     }
                     break;
                 case "Back":
+                    Console.WriteLine("Returning back...");
 
                     break;
                 default:
@@ -342,7 +356,7 @@ namespace PragueParkingOOP
               new SelectionPrompt<string>()
               .Title("[yellow]What Price settings would you like to modify?[/]")
               .AddChoices(new[] {
-                  "Car Price","Mc Price","Bike Price","Bus Price","Free minutes"}));
+                  "Car Price","Mc Price","Bike Price","Bus Price","Free minutes","Back"}));
             int newValue = Message.AskForNewValue();
             switch (choice)
             {
@@ -395,6 +409,9 @@ namespace PragueParkingOOP
                     {
                         Message.ErrorChangeSettings(newValue);
                     }
+                    break;
+                case "Back":
+                    Console.WriteLine("Returning back...");
                     break;
                 default:
                     Console.WriteLine("The menu selection does not exist yet");

@@ -10,7 +10,7 @@ namespace PragueParkingOOP
     {
         public MC(string _RegNum) : base(_RegNum)
         {
-            var settings = Configuration.ReadSettingsFromFile();
+            var settings = Configuration.ReadSettingsFromFile(); //instance the settings class to get our values from our json file
             Price = settings.McPrice;
             size = settings.McSize;
         }

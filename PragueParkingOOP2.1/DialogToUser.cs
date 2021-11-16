@@ -10,14 +10,17 @@ namespace PragueParkingOOP
 {
     public class DialogToUser
     {
-        public Configuration? settings { get; set; } = Configuration.ReadSettingsFromFile();
+        /// <summary>
+        /// Here is out dialog class where we show messages to the user deppending on what they do in the program.
+        /// </summary>
+        public Configuration? settings { get; set; } = Configuration.ReadSettingsFromFile(); //instance the settings class to get our values from our json file
         public void SuccsessMessage(string option, ParkingSpot spot)
         {
             var table = new Table();
             table.AddColumn($"[green] We succsesfully {option} your vehicle! Parked at parkingspot:{spot.SpotNumber}[/] ");
             AnsiConsole.Write(table);
         }
-        public void ParkinghouseFull()
+        public void ParkingHouseFull()
         {
             var tabel = new Table();
             tabel.AddColumn($"[red]We do not have any available space for your vehicle.Please comback Later..[/]");
@@ -49,7 +52,7 @@ namespace PragueParkingOOP
         public void PriceMessage(int price)
         {
             var table = new Table();
-            table.AddColumn($"[green]Price to pay :{price}:{settings.Currency}[/] ");
+            table.AddColumn($"[green]Price to pay: {price}:{settings.Currency}[/] ");
             AnsiConsole.Write(table); ;
         }
         public void PrintPriceList()
@@ -79,7 +82,6 @@ namespace PragueParkingOOP
             var table = new Table();
             table.AddColumn($"[green]Found vehicle:{vehicle.RegNumber}. Its parked at Parkingspot> {spot.SpotNumber}[/] ");
             AnsiConsole.Write(table);
-
         }
         public void PrintVehicles()
         {
@@ -88,15 +90,17 @@ namespace PragueParkingOOP
             var table = new Table();
             table.Expand();
             table.AddColumn(new TableColumn(new Markup("[yellow] PARKED VEHICLES [/]").Alignment(Justify.Center)));
+
             foreach (var vehicle in list)
             {
                 table.AddRow(vehicle.RegNumber);
             }
+
             AnsiConsole.Write(table);
         }
         public int AskForNewValue()
         {
-            Console.WriteLine("Changing settings value");// ändra text
+            Console.WriteLine("Changing settings value");
             Console.Write("Enter new settings Value: ");
             string userInput = Console.ReadLine();
             bool check = int.TryParse(userInput, out int newValue);
@@ -115,13 +119,12 @@ namespace PragueParkingOOP
         public void ErrorChangeSettings(int value)
         {
             var table = new Table();
-            table.AddColumn($"[red]There have been an error trying to change the setting. \nValue '{value}' is smaller then the original setting. We can only adjust it to a higher number.[/] ");
+            table.AddColumn($"[red]There have been an error trying to change the setting. \nValue '{value}' is smaller then the original setting. We can only adjust it to a higher number.\nRestart the program.[/] ");
             AnsiConsole.Write(table);
-            
         }
         public string SettingChangeCompleted(string setting, int value)
         {
-            return $"Settings '{setting}' was succsessfully changed to new value{value}";
+            return $"Settings '{setting}' was succsessfully changed to new value{value}. Please restarting the program";
         }
         public void BigVehiceSuccsess(string option, int newspot, ParkingSpot spot)
         {

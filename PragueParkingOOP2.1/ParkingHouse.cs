@@ -11,23 +11,24 @@ namespace PragueParkingOOP
     public class ParkingHouse
     {
 
-        public List<ParkingSpot>? ParkingList { get; set; } = Configuration.ReadParkingList();
-        public Configuration? Settings { get; set; } = Configuration.ReadSettingsFromFile();
-        public DialogToUser Message { get; set; } = new DialogToUser();
-
+        public List<ParkingSpot>? ParkingList { get; set; } = Configuration.ReadParkingList();  //Instance our parkinglist, Read from our json file
+        public Configuration? Settings { get; set; } = Configuration.ReadSettingsFromFile();    //Instance our settings class to get the value from our json settings file
+        public DialogToUser Message { get; set; } = new DialogToUser();                         //Instance our dialog class to reach the method there.
+        /// <summary>
+        /// Construct our parkinghouse, we check if the parkinglist is null 
+        /// or if there is parkingspots in the parked vehicles json file
+        /// </summary>
         public ParkingHouse()
         {
-
             if (ParkingList == null)
             {
-                ParkingList = new List<ParkingSpot>(capacity: 100);
+                ParkingList = new List<ParkingSpot>(capacity: Settings.ParkingHouseSize);
                 NewParkingHouse();
             }
             else
             {
                 ExpandParkinghouse();
             }
-
         }
         public void CreateVehicle(string regNum, string type)
         {
@@ -52,8 +53,8 @@ namespace PragueParkingOOP
                 default:
                     break;
             }
-        }
-        public bool AddVehicle(Vehicle vehicle)
+        }                           //Creating our diffrent vehicles
+        public bool AddVehicle(Vehicle vehicle)                                            // Adding our vehicles to the parkinglot if space is available
         {
             ParkingSpot spot = FirstAvailableSpace(vehicle);
             if (spot != null && vehicle.size <= Settings.ParkingSpotSize)
@@ -72,11 +73,11 @@ namespace PragueParkingOOP
             }
             else
             {
-                Message.ParkinghouseFull();
+                Message.ParkingHouseFull();
 
             }
             return false;
-        }
+        }                                           
         public bool RemoveVehicle(Vehicle vehicle, ParkingSpot spot, out int price)
         {
             var set = new Configuration();
@@ -95,8 +96,8 @@ namespace PragueParkingOOP
                 Settings.UpdateParkingList(ParkingList);
                 return true;
             }
-        }
-        public ParkingSpot FirstAvailableSpace(Vehicle vehicle)
+        }     // Removing vehicle from the program if its parked here.
+        public ParkingSpot FirstAvailableSpace(Vehicle vehicle)                            // looping true the parking list and return the first available space for the vehicle, checks the size of the vehicle
         {
             List<ParkingSpot> Templist = new List<ParkingSpot>();
 
@@ -139,14 +140,14 @@ namespace PragueParkingOOP
             {
                 ParkingList.Add(new ParkingSpot { SpotNumber = i + 1 });
             }
-        }
-        public void ExpandParkinghouse()
+        }                                                   // Creating an new parkinghouse with new spots if the program does not have any spots saved
+        public void ExpandParkinghouse()                                                   // Creating the parkinghouse from the saved parkingList
         {
             for (int i = ParkingList.Count; i < Settings.ParkingHouseSize; i++)
             {
                 ParkingList.Add(new ParkingSpot { SpotNumber = i + 1 });
             }
-        }
+        }                                               
         public bool MoveVehicle(Vehicle vehicle, ParkingSpot oldSpot)
         {
             Message.AskForNewSpot(out int newSpot);
@@ -172,8 +173,8 @@ namespace PragueParkingOOP
                 }
             }
             return false;
-        }
-        public bool CheckNewSpot(int newspot, Vehicle vehicle, out ParkingSpot newSpot)
+        }                   // Moving vehicle, check if the vehicle is parked here. and move the vehicle if there is space in the new parking spot
+        public bool CheckNewSpot(int newspot, Vehicle vehicle, out ParkingSpot newSpot)    // Check the new spot when moving the vehicle to see if there is enough space in the new spot
         {
             foreach (var spot in ParkingList)
             {
@@ -186,8 +187,8 @@ namespace PragueParkingOOP
             }
             newSpot = null;
             return false;
-        }
-        public (Vehicle?, ParkingSpot?) ExistRegnumber(string RegNumber)
+        }   
+        public (Vehicle?, ParkingSpot?) ExistRegnumber(string RegNumber)                   // Check if the regnumber the user input is an existing vehicle in the program
         {
 
             foreach (ParkingSpot spot in ParkingList)
@@ -202,8 +203,8 @@ namespace PragueParkingOOP
                 }
             }
             return (null, null);
-        }
-        public int CalculatePrice(string checkIn, Vehicle vehicle, out int price)
+        }               
+        public int CalculatePrice(string checkIn, Vehicle vehicle, out int price)          // Calculating the price when checking out an vehicle deppening on the time its been parked and the price of the vehicle
         {
 
             TimeSpan span = DateTime.Now - vehicle.TimeIn;
@@ -226,8 +227,8 @@ namespace PragueParkingOOP
                 }
             }
             return price;
-        }
-        public List<Vehicle> GetParkedVehicles()
+        }       
+        public List<Vehicle> GetParkedVehicles()                                           // Collecting the parked vehicles to display for the user in showVehicles
         {
             var list = new List<Vehicle>();
             foreach (var parkingspots in ParkingList)
@@ -242,7 +243,7 @@ namespace PragueParkingOOP
             }
             return list;
         }
-        public void ResetLargeVehicleSpace(Vehicle vehicle)
+        public void ResetLargeVehicleSpace(Vehicle vehicle)                                // Reset all the parkingspots when removing larger vehicles that takes more then on parkingspot,
         {
             foreach (var spot in ParkingList)
             {
@@ -290,10 +291,10 @@ namespace PragueParkingOOP
 
             NewSpot = null;
             return true;
-        }
+        }// For moving larger vehicle that takes more then one parkingspot we check if the new spots and the x other parkingspaces is availble to move the vehicle
         public void WriteSettingsToFile(Configuration settings)
         {
-            JsonSerializer serializer = new JsonSerializer();//// läs på om vad denna gör 
+            JsonSerializer serializer = new JsonSerializer();
             serializer.Converters.Add(new JavaScriptDateTimeConverter());
             serializer.NullValueHandling = NullValueHandling.Ignore;
             string parkingHouseString = JsonConvert.SerializeObject(settings, Formatting.Indented);
@@ -301,7 +302,8 @@ namespace PragueParkingOOP
             {
                 writer.Write(parkingHouseString);
             }
-        }
+            Environment.Exit(0); 
+        }                           // When modify the settings we write the new value to the configuration file so its save, restarting the program so the new setting can be applied
         public void ClearParkingSpots()
         {
             foreach (var spot in ParkingList)
@@ -313,6 +315,7 @@ namespace PragueParkingOOP
                     spot.vehicles.Clear();
                 }
             }
-        }
+            Settings.UpdateParkingList(ParkingList);
+        }                                                   // clear the parkinglist from all the vehicles.
     }
 }

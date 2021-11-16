@@ -2,13 +2,10 @@
 
 using PragueParkingOOP;
 
-
 Menu menu = new Menu();
 do
 {
     menu.MenuSelection();
-
 } while (true);
 
-//TODO : Kommentera koden
 

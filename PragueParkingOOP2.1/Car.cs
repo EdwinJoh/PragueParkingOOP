@@ -8,9 +8,9 @@ namespace PragueParkingOOP
 {
     internal class Car : Vehicle
     {
-        public Car(string aRegNum) : base(aRegNum)
+        public Car(string aRegNum) : base(aRegNum)//Set Regnumber in vehcle class (parent class)
         {
-            var settings = Configuration.ReadSettingsFromFile();
+            var settings = Configuration.ReadSettingsFromFile();//instance the settings class to get our values from our json file
             size = settings.CarSize;
             Price = settings.CarPrice;
 
