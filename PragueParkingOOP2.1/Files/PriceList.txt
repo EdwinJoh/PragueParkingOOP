@@ -1,6 +1,6 @@
 ﻿Prices per hour
 ---------------
-Bike: 5		   
-Mc:  10		   
-Car: 20		   
-Bus: 80		   
+Bike: 5
+Mc:  10
+Car: 20
+Bus: 80
