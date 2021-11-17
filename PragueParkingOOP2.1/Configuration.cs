@@ -44,13 +44,21 @@ namespace PragueParkingOOP
                 var configurations = JsonConvert.DeserializeObject<Configuration>(settingsJson);
                 return configurations;
             }
-
         }
         internal static List<ParkingSpot>? ReadParkingList() // Read from our json file that have our parkinglist with our parked vehicles
         {
-            string temp = File.ReadAllText(ParkingListPath);
-            var Templist = JsonConvert.DeserializeObject<List<ParkingSpot>>(temp);
-            return Templist;
+            if (File.Exists(ParkingListPath))
+            {
+                string temp = File.ReadAllText(ParkingListPath);
+                var Templist = JsonConvert.DeserializeObject<List<ParkingSpot>>(temp);
+                return Templist;
+            }
+            else
+            {
+                Console.WriteLine("Parkinglist file does not exist, we will create an new one for you");
+                File.Create(PriceListPath).Close();
+                return null;
+            }
         }
         internal void UpdateParkingList<T>(List<T> list) // Saves/update the parkinglist every time we do some changes in it. Remove, add, Moves vehicles
         {
@@ -62,7 +70,7 @@ namespace PragueParkingOOP
             List<string> priceFile = File.ReadAllLines(PriceListPath).ToList();
             return priceFile;
         }
-       
+
     }
 }
 
