@@ -59,7 +59,7 @@ namespace PragueParkingOOP
             ParkingSpot spot = FirstAvailableSpace(vehicle);
             if (spot != null && vehicle.size <= Settings.ParkingSpotSize)
             {
-                spot.AddVehicle(vehicle);
+                spot.AddVehicleToList(vehicle);
                 Settings.UpdateParkingList(ParkingList);
                 Message.SuccsessMessage("Parked", spot);
                 return true;
@@ -156,7 +156,7 @@ namespace PragueParkingOOP
                 if (CheckNewSpot(newSpot, vehicle, out ParkingSpot spot))
                 {
                     RemoveVehicle(vehicle, oldSpot, out _);
-                    spot.AddVehicle(vehicle);
+                    spot.AddVehicleToList(vehicle);
                     Settings.UpdateParkingList(ParkingList);
                     Message.SuccsessMessage("Moved", spot);
                     return true;

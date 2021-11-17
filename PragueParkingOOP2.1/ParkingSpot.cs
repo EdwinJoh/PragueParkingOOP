@@ -17,12 +17,12 @@ namespace PragueParkingOOP
         public string Status { get; set; }                          // Use to seperate for our larger vehicles 
         public ParkingSpot()                                        // Construct the parkingspot, sets the value necessary for one spot
         {
-            var set = Configuration.ReadSettingsFromFile();
-            AvailableSize = set.ParkingSpotSize;
+            var setting = Configuration.ReadSettingsFromFile();
+            AvailableSize = setting.ParkingSpotSize;
             Status = "";
 
         }
-        public bool AddVehicle(Vehicle vehicle)
+        public bool AddVehicleToList(Vehicle vehicle)
         {
             vehicles.Add(vehicle);
             AvailableSize -= vehicle.size;
