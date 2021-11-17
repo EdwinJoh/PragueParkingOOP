@@ -321,6 +321,7 @@ namespace PragueParkingOOP
                 }
             }
             Settings.UpdateParkingList(ParkingList);
+            Console.WriteLine("Parkinglot reseting. All parked vehicles has been removed");
         }                                                   // clear the parkinglist from all the vehicles.
     }
 }

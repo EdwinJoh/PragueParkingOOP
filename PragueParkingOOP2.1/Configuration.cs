@@ -32,17 +32,19 @@ namespace PragueParkingOOP
 
         internal static Configuration? ReadSettingsFromFile(string filePath = "../../../Files/ConfigSettings.json") // Read from settings file
         {
-            if (File.Exists(filePath))
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine("Configfile does not exist. Creating an new jsonSettings file: Restart program and write the value in the new file to run the program");
+                File.Create(filePath).Close();
+                return null;
+            }
+            else
             {
                 string settingsJson = File.ReadAllText(filePath);
                 var configurations = JsonConvert.DeserializeObject<Configuration>(settingsJson);
                 return configurations;
             }
-            else
-            {
-                throw new Exception("File does not exist");
-                //TODO: Skapa en ny tom lista åt användaren
-            }
+
         }
         internal static List<ParkingSpot>? ReadParkingList() // Read from our json file that have our parkinglist with our parked vehicles
         {
@@ -60,6 +62,7 @@ namespace PragueParkingOOP
             List<string> priceFile = File.ReadAllLines(PriceListPath).ToList();
             return priceFile;
         }
+       
     }
 }
 
