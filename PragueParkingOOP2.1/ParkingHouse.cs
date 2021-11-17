@@ -254,7 +254,7 @@ namespace PragueParkingOOP
                 }
             }
         }
-        public bool CheckSpotsInRows(Vehicle vehicle, int newSpot, out ParkingSpot NewSpot)
+        public bool CheckSpotsInRows(Vehicle vehicle, int newSpot, out ParkingSpot NewSpot) // For moving larger vehicle that takes more then one parkingspot we check if the new spots and the x other parkingspaces is availble to move the vehicle
         {
 
             List<ParkingSpot> tempSpots = new List<ParkingSpot>();
@@ -291,7 +291,7 @@ namespace PragueParkingOOP
 
             NewSpot = null;
             return true;
-        }// For moving larger vehicle that takes more then one parkingspot we check if the new spots and the x other parkingspaces is availble to move the vehicle
+        }
         public void WriteSettingsToFile(Configuration settings)
         {
             JsonSerializer serializer = new JsonSerializer();

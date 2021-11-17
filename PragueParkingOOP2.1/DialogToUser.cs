@@ -86,17 +86,26 @@ namespace PragueParkingOOP
         public void PrintVehicles()
         {
             var pHouse = new ParkingHouse();
+
             List<Vehicle> list = pHouse.GetParkedVehicles();
             var table = new Table();
+            table.AddColumn("[yellow]Parked Vehicle[/]");
+            table.AddColumn(new TableColumn(new Markup("[yellow]parking stated [/]").Alignment(Justify.Center)));
+            table.AddColumns("[yellow] Cost");
             table.Expand();
-            table.AddColumn(new TableColumn(new Markup("[yellow] PARKED VEHICLES [/]").Alignment(Justify.Center)));
 
             foreach (var vehicle in list)
             {
-                table.AddRow(vehicle.RegNumber);
+
+                table.AddRow(vehicle.RegNumber, vehicle.TimeIn.ToString("G"),pHouse.CalculatePrice(vehicle.TimeIn.ToString(),vehicle,out int price);
             }
 
             AnsiConsole.Write(table);
+            Table newtable = new Table();
+            newtable.AddColumn("Press any key to go back to the menu");
+            AnsiConsole.Write(newtable);
+            Console.ReadKey();
+
         }
         public int AskForNewValue()
         {
