@@ -193,9 +193,9 @@ namespace PragueParkingOOP
                 {
                     return true;
                 }
-                else
+                else if (vehicleFound == null)
                 {
-                    Message.MoveNotCompleted(RegNumber);
+                    Message.ErrorCheckReg(RegNumber);
                 }
             }
             else

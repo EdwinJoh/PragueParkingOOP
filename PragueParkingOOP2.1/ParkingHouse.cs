@@ -77,7 +77,7 @@ namespace PragueParkingOOP
 
             }
             return false;
-        }                                           
+        }
         public bool RemoveVehicle(Vehicle vehicle, ParkingSpot spot, out int price)
         {
             var set = new Configuration();
@@ -147,7 +147,7 @@ namespace PragueParkingOOP
             {
                 ParkingList.Add(new ParkingSpot { SpotNumber = i + 1 });
             }
-        }                                               
+        }
         public bool MoveVehicle(Vehicle vehicle, ParkingSpot oldSpot)
         {
             Message.AskForNewSpot(out int newSpot);
@@ -161,6 +161,11 @@ namespace PragueParkingOOP
                     Message.SuccsessMessage("Moved", spot);
                     return true;
                 }
+            }
+            else if (newSpot == 0)
+            {
+                
+                return false;
             }
             else
             {
@@ -187,7 +192,7 @@ namespace PragueParkingOOP
             }
             newSpot = null;
             return false;
-        }   
+        }
         public (Vehicle?, ParkingSpot?) ExistRegnumber(string RegNumber)                   // Check if the regnumber the user input is an existing vehicle in the program
         {
 
@@ -203,7 +208,7 @@ namespace PragueParkingOOP
                 }
             }
             return (null, null);
-        }               
+        }
         public int CalculatePrice(string checkIn, Vehicle vehicle, out int price)          // Calculating the price when checking out an vehicle deppening on the time its been parked and the price of the vehicle
         {
 
@@ -227,7 +232,7 @@ namespace PragueParkingOOP
                 }
             }
             return price;
-        }       
+        }
         public List<Vehicle> GetParkedVehicles()                                           // Collecting the parked vehicles to display for the user in showVehicles
         {
             var list = new List<Vehicle>();
@@ -302,7 +307,7 @@ namespace PragueParkingOOP
             {
                 writer.Write(parkingHouseString);
             }
-            Environment.Exit(0); 
+            Environment.Exit(0);
         }                           // When modify the settings we write the new value to the configuration file so its save, restarting the program so the new setting can be applied
         public void ClearParkingSpots()
         {

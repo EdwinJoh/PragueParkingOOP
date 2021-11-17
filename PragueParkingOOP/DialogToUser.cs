@@ -94,8 +94,7 @@ namespace PragueParkingOOP
                 table.AddRow(vehicle.RegNumber);
             }
             AnsiConsole.Write(table);
-            table.AddColumn(new TableColumn("[grey]Parked Vehicles[/]").Centered()).Alignment(Justify.Center);
-            AnsiConsole.Write(table);
+          
         }
 
     }
