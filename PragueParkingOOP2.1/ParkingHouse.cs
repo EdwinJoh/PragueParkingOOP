@@ -171,6 +171,7 @@ namespace PragueParkingOOP
             {
                 if (newSpot <= Settings.SpacesForLargeVehicle && CheckSpotsInRows(vehicle, newSpot, out ParkingSpot spot))
                 {
+                    oldSpot.RemoveLargeVehicle(vehicle);
                     spot.Addlargevehicle(vehicle);
                     Settings.UpdateParkingList(ParkingList);
                     Message.BigVehiceSuccsess("Moved", newSpot, spot);
@@ -282,6 +283,7 @@ namespace PragueParkingOOP
                 }
                 if (tempSpots.Count == vehicle.size / Settings.ParkingSpotSize)
                 {
+                    
                     ResetLargeVehicleSpace(vehicle);
                     foreach (var spot in tempSpots)
                     {
@@ -290,6 +292,7 @@ namespace PragueParkingOOP
 
                     }
                     NewSpot = ParkingList[i];
+                    Settings.UpdateParkingList(ParkingList);
                     return true;
                 }
             }

@@ -53,7 +53,7 @@ namespace PragueParkingOOP
         {
             var table = new Table();
             table.AddColumn($"[green]Price to pay: {price}:{settings.Currency}[/] ");
-            AnsiConsole.Write(table); ;
+            AnsiConsole.Write(table); 
         }
         public void PrintPriceList()
         {

@@ -17,6 +17,7 @@ namespace PragueParkingOOP
         public DialogToUser Message { get; set; } = new DialogToUser();             // Instance our dialog class to reach our method from that class
         public ParkingHouse parkingHouse = new ParkingHouse();                      // Creating the parkinghouse when we starting the program
         public Configuration? Settings = Configuration.ReadSettingsFromFile();      // Instance our settings class to reach our sizes and and method from the settings class
+       
         public string MenuOption()
         {
             Console.Clear();
