@@ -1,33 +1,13 @@
 [
   {
-    "vehicles": [
-      {
-        "RegNumber": "HEJ123",
-        "size": 4,
-        "TimeIn": "2021-11-17T10:08:55.0076656+01:00",
-        "Price": 20
-      }
-    ],
-    "AvailableSize": 0,
+    "vehicles": [],
+    "AvailableSize": 4,
     "SpotNumber": 1,
     "Status": ""
   },
   {
-    "vehicles": [
-      {
-        "RegNumber": "KEK123",
-        "size": 2,
-        "TimeIn": "2021-11-17T10:09:00.8202446+01:00",
-        "Price": 10
-      },
-      {
-        "RegNumber": "JAJ123",
-        "size": 1,
-        "TimeIn": "2021-11-17T10:09:08.2784725+01:00",
-        "Price": 5
-      }
-    ],
-    "AvailableSize": 1,
+    "vehicles": [],
+    "AvailableSize": 4,
     "SpotNumber": 2,
     "Status": ""
   },
@@ -227,27 +207,34 @@
   },
   {
     "vehicles": [],
-    "AvailableSize": 4,
+    "AvailableSize": 0,
     "SpotNumber": 33,
-    "Status": ""
+    "Status": "HEJ123"
   },
   {
     "vehicles": [],
-    "AvailableSize": 4,
+    "AvailableSize": 0,
     "SpotNumber": 34,
-    "Status": ""
+    "Status": "HEJ123"
   },
   {
     "vehicles": [],
-    "AvailableSize": 4,
+    "AvailableSize": 0,
     "SpotNumber": 35,
-    "Status": ""
+    "Status": "HEJ123"
   },
   {
-    "vehicles": [],
-    "AvailableSize": 4,
+    "vehicles": [
+      {
+        "RegNumber": "HEJ123",
+        "size": 16,
+        "TimeIn": "2021-11-18T10:43:34.2833229+01:00",
+        "Price": 80
+      }
+    ],
+    "AvailableSize": 0,
     "SpotNumber": 36,
-    "Status": ""
+    "Status": "HEJ123"
   },
   {
     "vehicles": [],
