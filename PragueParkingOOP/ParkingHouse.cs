@@ -67,8 +67,6 @@ namespace PragueParkingOOP
             Settings.UpdateParkingList(ParkingList);
             return true;
 
-            price = 0;
-            return false;
         }
         public ParkingSpot FirstAvailableSpace(Vehicle vehicle)
         {

@@ -164,7 +164,7 @@ namespace PragueParkingOOP
             }
             else if (newSpot == 0)
             {
-                
+
                 return false;
             }
             else
